@@ -2,71 +2,50 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>Página Principal</title>
+  <title>Chihuahua Games</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #000;
       color: #fff;
       text-align: center;
-      padding: 50px;
+      padding: 80px 30px;
+      margin: 0;
     }
 
     h1 {
-      color: #fff;
+      color: #8001ff;
+      font-size: 42px;
+      margin-bottom: 30px;
     }
 
     p {
-      color: #aaa;
+      font-size: 18px;
+      margin-bottom: 40px;
+      color: #ccc;
     }
 
-    .social-links {
-      margin-top: 20px;
-    }
-
-    .social-links a {
+    .btn {
       display: inline-block;
       margin: 10px;
-    }
-
-    .social-links img {
-      width: 40px;
-      height: 40px;
-      filter: invert(1);
-      transition: transform 0.2s;
-    }
-
-    .social-links img:hover {
-      transform: scale(1.1);
-    }
-
-    .buttons {
-      margin-top: 40px;
-    }
-
-    .buttons a {
-      display: inline-block;
       padding: 15px 30px;
-      background-color: #1a1a1a;
-      color: white;
+      background-color: #8001ff;
+      color: #fff;
       text-decoration: none;
       border-radius: 12px;
-      margin: 10px;
+      font-size: 16px;
       font-weight: bold;
-      transition: background-color 0.3s;
-      border: 1px solid #fff;
+      transition: background-color 0.3s ease;
     }
 
-    .buttons a:hover {
-      background-color: #333;
+    .btn:hover {
+      background-color: #a341ff;
     }
 
-    img.profile {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
+    .footer {
+      margin-top: 60px;
+      font-size: 14px;
+      color: #666;
     }
   </style>
 </head>
@@ -74,30 +53,13 @@
 
   <audio id="clickSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_3e5a4c1a21.mp3" preload="auto"></audio>
 
-  <img class="profile" src="https://yt3.googleusercontent.com/cnY7RLWN-GyZ8f2Za63Z13l4GRageIFoTt96i3u92dBCEygwHLxHabGTjLqZ3LAmXthoymI6=s160-c-k-c0x00ffffff-no-rj" alt="Chi">
+  <h1>Bem-vindo à Chihuahua Games!</h1>
+  <p>Aqui vais encontrar os nossos jogos, recomendações e muito mais. Pronto para explorar?</p>
 
-  <h1>Chi</h1>
-  <p>Saudações meros Mortais<br>eu sou a Chihuahua! :)</p>
+  <a class="btn" href="produtos.html">🎧 Ver Produtos</a>
+  <a class="btn" href="https://www.eneba.com/pt/?af_id=ChihuahuaGames&utm_medium=infl&utm_source=ChihuahuaGames" target="_blank">🕹️ Ir para a Eneba</a>
 
-  <div class="social-links">
-    <a href="https://www.tiktok.com/@bychihuahua" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
-    </a>
-    <a href="https://www.youtube.com/@bychihuahua" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
-    </a>
-    <a href="https://www.instagram.com/bychihuahua" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
-    </a>
-    <a href="https://www.twitch.tv/bychihuahuatv" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968819.png" alt="Twitch">
-    </a>
-  </div>
-
-  <div class="buttons">
-    <a href="produtos.html">🛍 Produtos</a>
-    <a href="https://www.eneba.com/pt/?af_id=ChihuahuaGames&utm_medium=infl&utm_source=ChihuahuaGames" target="_blank">🎮 Eneba</a>
-  </div>
+  <div class="footer">© 2025 Chihuahua Games. Todos os direitos reservados.</div>
 
   <script>
     const clickSound = document.getElementById("clickSound");
@@ -111,4 +73,3 @@
 
 </body>
 </html>
-
