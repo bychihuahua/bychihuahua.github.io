@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Produtos</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #ff0066;
+    }
+
+    a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+
+    .search-bar {
+      margin-bottom: 30px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      background-color: #ff0066;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #cc0052;
+    }
+
+    .product-list {
+      margin-top: 20px;
+      display: none;
+      list-style-type: none;
+      padding: 0;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    .product-list li {
+      background-color: #f9f9f9;
+      padding: 10px;
+      margin: 5px 0;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .product-list li:hover {
+      background-color: #f0f0f0;
+    }
+
+    .product-img {
+      margin-top: 30px;
+    }
+
+    .voltar {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 15px 30px;
+      background-color: #1a1a1a;
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: bold;
+      border: 1px solid #000;
+    }
+
+    .voltar:hover {
+      background-color: #333;
+    }
+  </style>
+
+  <script>
+    const products = [
+      { name: "KZ EDX PRO", link: "https://tidd.ly/3Y4v0mn" },
+      { name: "KZ ZS10 Pro", link: "https://tidd.ly/3Z4mnbv" },
+      { name: "Sony WH-1000XM4", link: "https://tidd.ly/3Y5nsmv" },
+      { name: "Bose QC35 II", link: "https://tidd.ly/3Y8nslo" }
+    ];
+
+    function filterProducts() {
+      const query = document.getElementById("search-input").value.toLowerCase();
+      const filteredProducts = products.filter(product => product.name.toLowerCase().startsWith(query));
+
+      const productList = document.getElementById("product-list");
+      productList.innerHTML = "";
+
+      if (filteredProducts.length > 0 && query !== "") {
+        productList.style.display = "block";
+        filteredProducts.forEach(product => {
+          const listItem = document.createElement("li");
+          listItem.textContent = product.name;
+          listItem.onclick = () => window.location.href = product.link;
+          productList.appendChild(listItem);
+        });
+      } else {
+        productList.style.display = "none";
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <audio id="clickSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_3e5a4c1a21.mp3" preload="auto"></audio>
+
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="Pesquisar..." onkeyup="filterProducts()">
+  </div>
+
+  <h1>Saudações meros mortais! 👋</h1>
+  <p>Vou deixar aqui os links dos meus produtos favoritos</p>
+  <a href="https://www.instagram.com/bychihuahua" target="_blank">Segue-me no Insta!</a>
+
+  <ul id="product-list" class="product-list"></ul>
+
+  <div class="product-img">
+    <a href="https://tidd.ly/3Y4v0mn" target="_blank">
+      <img src="https://img.gkbcdn.com/p/2022-03-22/KZ-EDX-Pro-Wired-Earphone-In-ear-with-Mic-Black-498138-0._w500_p1_.jpg" alt="KZ EDX PRO" width="300">
+    </a>
+  </div>
+
+  <a class="voltar" href="index.html">🔙 Voltar à Página Principal</a>
+
+  <script>
+    const clickSound = document.getElementById("clickSound");
+    document.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        clickSound.currentTime = 0;
+        clickSound.play();
+      });
+    });
+  </script>
+
+</body>
+</html>
