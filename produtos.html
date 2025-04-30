@@ -1,87 +1,163 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
-  <title>Produtos</title>
+  <title>Produtos - Chihuahua Games</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #000;
       color: #fff;
       text-align: center;
-      padding: 50px;
+      padding: 30px 15px;
       margin: 0;
+      min-height: 100vh;
+      box-sizing: border-box;
     }
 
     h1 {
       color: #8001ff;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
+      font-size: clamp(24px, 6vw, 36px);
+      padding: 0 10px;
+    }
+
+    .search-container {
+      max-width: 500px;
+      margin: 0 auto 30px;
+      padding: 0 15px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     input[type="text"] {
-      padding: 12px;
-      width: 300px;
+      padding: 12px 15px;
+      width: 100%;
+      max-width: 400px;
       border: 2px solid #8001ff;
       border-radius: 8px;
       outline: none;
-      font-size: 16px;
+      font-size: clamp(14px, 4vw, 16px);
       background-color: #1a1a1a;
       color: #fff;
-      transition: border 0.3s;
+      transition: all 0.3s;
     }
 
     input[type="text"]:focus {
       border-color: #a341ff;
+      box-shadow: 0 0 8px rgba(128, 1, 255, 0.5);
     }
 
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
       max-width: 1000px;
-      margin: 40px auto 0;
+      margin: 30px auto 0;
+      padding: 0 15px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .product-card {
       background-color: #1a1a1a;
       border: 1px solid #8001ff;
       border-radius: 12px;
-      padding: 15px;
-      transition: transform 0.3s, background-color 0.3s;
+      padding: 12px;
+      transition: all 0.3s ease;
       cursor: pointer;
+      overflow: hidden;
     }
 
     .product-card:hover {
-      transform: scale(1.05);
+      transform: translateY(-5px);
       background-color: #2c0052;
+      box-shadow: 0 8px 15px rgba(128, 1, 255, 0.2);
     }
 
     .product-card img {
-      max-width: 100%;
+      width: 100%;
+      height: auto;
       border-radius: 8px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
     }
 
     .product-name {
-      margin-top: 10px;
+      margin-top: 12px;
       font-weight: bold;
       color: #8001ff;
+      font-size: clamp(14px, 4vw, 16px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .btn-container {
+      margin-top: 40px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
 
     .voltar {
       display: inline-block;
-      margin-top: 50px;
-      padding: 12px 24px;
+      padding: 14px 25px;
       background-color: #8001ff;
       color: white;
       text-decoration: none;
       border-radius: 12px;
       font-weight: bold;
       border: none;
-      transition: background-color 0.3s;
+      transition: all 0.3s ease;
+      font-size: clamp(14px, 4vw, 16px);
+      cursor: pointer;
+      max-width: 300px;
+      width: 100%;
     }
 
     .voltar:hover {
       background-color: #a341ff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(128, 1, 255, 0.3);
+    }
+
+    /* Tablet */
+    @media (min-width: 600px) {
+      body {
+        padding: 40px 20px;
+      }
+      
+      .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+      }
+      
+      .product-card {
+        padding: 15px;
+      }
+    }
+
+    /* Desktop */
+    @media (min-width: 1024px) {
+      body {
+        padding: 50px;
+      }
+      
+      .product-grid {
+        gap: 30px;
+      }
+      
+      .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 20px rgba(128, 1, 255, 0.3);
+      }
+      
+      .voltar:hover {
+        transform: translateY(-3px);
+      }
     }
   </style>
 </head>
@@ -91,11 +167,15 @@
 
   <h1>Qual o produto que estás à procura?</h1>
 
-  <input type="text" id="search-input" placeholder="Pesquisar..." onkeyup="filterProducts()">
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="🔍 Pesquisar..." onkeyup="filterProducts()">
+  </div>
 
   <div id="product-grid" class="product-grid"></div>
 
-  <a class="voltar" href="index.html">🔙 Voltar à Página Principal</a>
+  <div class="btn-container">
+    <a class="voltar" href="index.html">🔙 Voltar à Página Principal</a>
+  </div>
 
   <script>
     const products = [
@@ -123,9 +203,13 @@
       list.forEach(product => {
         const card = document.createElement("div");
         card.className = "product-card";
-        card.onclick = () => window.open(product.link, "_blank");
+        card.onclick = () => {
+          clickSound.currentTime = 0;
+          clickSound.play();
+          setTimeout(() => window.open(product.link, "_blank"), 200);
+        };
         card.innerHTML = `
-          <img src="${product.img}" alt="${product.name}">
+          <img src="${product.img}" alt="${product.name}" loading="lazy">
           <div class="product-name">${product.name}</div>
         `;
         grid.appendChild(card);
@@ -138,14 +222,21 @@
       showProducts(filtered);
     }
 
-    showProducts(products); // mostra todos os produtos no início
+    // Mostra todos os produtos no início
+    showProducts(products);
 
     // Som ao clicar
     const clickSound = document.getElementById("clickSound");
     document.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        clickSound.currentTime = 0;
-        clickSound.play();
+      link.addEventListener("click", (e) => {
+        if (!link.href.includes("javascript:")) {
+          e.preventDefault();
+          clickSound.currentTime = 0;
+          clickSound.play();
+          setTimeout(() => {
+            window.location.href = link.href;
+          }, 200);
+        }
       });
     });
   </script>
