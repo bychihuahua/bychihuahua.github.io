@@ -2,42 +2,56 @@
 <html lang="pt">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-7634353064287764">
   <meta charset="UTF-8">
   <title>Produtos - Chihuahua Games</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
       background-color: #000;
       color: #fff;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding: 30px 15px;
-      margin: 0;
       min-height: 100vh;
       box-sizing: border-box;
+      background-image: linear-gradient(to bottom, #1a1a1a, #000);
+    }
+
+    .profile-pic {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #8001ff;
+      margin-bottom: 15px;
     }
 
     h1 {
       color: #8001ff;
-      margin-bottom: 25px;
-      font-size: clamp(24px, 6vw, 36px);
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: clamp(24px, 6vw, 32px);
       padding: 0 10px;
+      font-weight: normal;
     }
 
     .search-container {
       max-width: 500px;
-      margin: 0 auto 30px;
+      margin: 0 auto 25px;
       padding: 0 15px;
       width: 100%;
       box-sizing: border-box;
     }
 
     input[type="text"] {
-      padding: 12px 15px;
+      padding: 14px 20px;
       width: 100%;
-      max-width: 400px;
-      border: 2px solid #8001ff;
-      border-radius: 8px;
+      border: 1px solid #333;
+      border-radius: 10px;
       outline: none;
       font-size: clamp(14px, 4vw, 16px);
       background-color: #1a1a1a;
@@ -46,16 +60,16 @@
     }
 
     input[type="text"]:focus {
-      border-color: #a341ff;
-      box-shadow: 0 0 8px rgba(128, 1, 255, 0.5);
+      border-color: #8001ff;
+      box-shadow: 0 0 0 2px rgba(128, 1, 255, 0.3);
     }
 
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: 30px auto 0;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 15px;
+      max-width: 800px;
+      margin: 0 auto;
       padding: 0 15px;
       width: 100%;
       box-sizing: border-box;
@@ -63,18 +77,20 @@
 
     .product-card {
       background-color: #1a1a1a;
-      border: 1px solid #8001ff;
-      border-radius: 12px;
+      border-radius: 10px;
       padding: 12px;
       transition: all 0.3s ease;
       cursor: pointer;
       overflow: hidden;
+      border: 1px solid #333;
+      display: flex;
+      flex-direction: column;
     }
 
     .product-card:hover {
       transform: translateY(-5px);
-      background-color: #2c0052;
-      box-shadow: 0 8px 15px rgba(128, 1, 255, 0.2);
+      border-color: #8001ff;
+      box-shadow: 0 5px 15px rgba(128, 1, 255, 0.2);
     }
 
     .product-card img {
@@ -83,56 +99,62 @@
       border-radius: 8px;
       aspect-ratio: 1/1;
       object-fit: cover;
+      margin-bottom: 12px;
     }
 
     .product-name {
-      margin-top: 12px;
-      font-weight: bold;
-      color: #8001ff;
-      font-size: clamp(14px, 4vw, 16px);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      margin-top: auto;
+      font-weight: normal;
+      color: #fff;
+      font-size: clamp(14px, 4vw, 15px);
+      text-align: center;
+      padding: 0 5px;
     }
 
     .btn-container {
       margin-top: 40px;
       width: 100%;
-      display: flex;
-      justify-content: center;
+      max-width: 500px;
+      padding: 0 15px;
     }
 
     .voltar {
-      display: inline-block;
-      padding: 14px 25px;
-      background-color: #8001ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 20px;
+      background-color: #1a1a1a;
       color: white;
       text-decoration: none;
-      border-radius: 12px;
-      font-weight: bold;
-      border: none;
+      border-radius: 10px;
+      font-weight: normal;
       transition: all 0.3s ease;
-      font-size: clamp(14px, 4vw, 16px);
-      cursor: pointer;
-      max-width: 300px;
       width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+      font-size: clamp(14px, 4vw, 16px);
+      border: 1px solid #333;
     }
 
     .voltar:hover {
-      background-color: #a341ff;
+      background-color: #8001ff;
       transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(128, 1, 255, 0.3);
+      border-color: #8001ff;
+    }
+
+    .voltar i {
+      margin-right: 10px;
     }
 
     /* Tablet */
     @media (min-width: 600px) {
       body {
-        padding: 40px 20px;
+        padding: 30px 20px;
       }
       
       .product-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 25px;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
       }
       
       .product-card {
@@ -143,20 +165,11 @@
     /* Desktop */
     @media (min-width: 1024px) {
       body {
-        padding: 50px;
+        padding: 40px;
       }
       
       .product-grid {
-        gap: 30px;
-      }
-      
-      .product-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 12px 20px rgba(128, 1, 255, 0.3);
-      }
-      
-      .voltar:hover {
-        transform: translateY(-3px);
+        gap: 25px;
       }
     }
   </style>
@@ -165,16 +178,19 @@
 
   <audio id="clickSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_3e5a4c1a21.mp3" preload="auto"></audio>
 
+  <!-- Cabeçalho consistente com a página principal -->
+  <img src="https://yt3.googleusercontent.com/cnY7RLWN-GyZ8f2Za63Z13l4GRageIFoTt96i3u92dBCEygwHLxHabGTjLqZ3LAmXthoymI6=s160-c-k-c0x00ffffff-no-rj" alt="Chihuahua" class="profile-pic">
+  
   <h1>Qual o produto que estás à procura?</h1>
 
   <div class="search-container">
-    <input type="text" id="search-input" placeholder="🔍 Pesquisar..." onkeyup="filterProducts()">
+    <input type="text" id="search-input" placeholder="🔍 Pesquisar produtos..." onkeyup="filterProducts()">
   </div>
 
   <div id="product-grid" class="product-grid"></div>
 
   <div class="btn-container">
-    <a class="voltar" href="index.html">🔙 Voltar à Página Principal</a>
+    <a class="voltar" href="index.html"><i class="fas fa-arrow-left"></i>Voltar à Página Principal</a>
   </div>
 
   <script>
@@ -185,12 +201,12 @@
         img: "https://img.gkbcdn.com/p/2022-03-22/KZ-EDX-Pro-Wired-Earphone-In-ear-with-Mic-Black-498138-0._w500_p1_.jpg" 
       },
       { 
-        name: "Kz az09 bluetooth", 
+        name: "KZ AZ09 Bluetooth", 
         link: "https://tidd.ly/4cIzXqY", 
         img: "https://m.media-amazon.com/images/I/618NWjBPN4S.jpg" 
       },
       { 
-        name: "Kz fio tipo c", 
+        name: "KZ Fio Tipo C", 
         link: "https://a.aliexpress.com/_EJUc6CS", 
         img: "https://m.media-amazon.com/images/I/61HDJy0aMtL._AC_UF894,1000_QL80_.jpg" 
       }
@@ -240,6 +256,9 @@
       });
     });
   </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7634353064287764"
+     crossorigin="anonymous"></script>
 
 </body>
 </html>
