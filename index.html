@@ -132,23 +132,61 @@
       width: 100%;
     }
 
-    .setup-card {
-      background-color: #1a1a1a;
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 15px;
+    .setup-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       width: 100%;
       max-width: 500px;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .setup-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: #1a1a1a;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      width: 100%;
+      text-align: left;
+      box-sizing: border-box;
+      font-size: clamp(14px, 4vw, 16px);
       border: 1px solid #333;
+      position: relative;
+      overflow: hidden;
+      padding-right: 70px;
     }
 
-    .setup-item {
-      margin-bottom: 8px;
-      font-size: 14px;
+    .setup-btn:hover {
+      background-color: #8001ff;
+      transform: translateY(-2px);
+      border-color: #8001ff;
     }
 
-    .setup-item strong {
-      color: #8001ff;
+    .setup-btn .arrow {
+      display: none;
+    }
+
+    .product-img {
+      position: absolute;
+      right: 15px;
+      height: 40px;
+      width: auto;
+      max-width: 60px;
+      object-fit: contain;
+      opacity: 1;
+      z-index: 2;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .btn-content {
+      z-index: 2;
     }
 
     /* Tablet */
@@ -157,7 +195,7 @@
         padding: 30px 20px;
       }
       
-      .btn {
+      .btn, .setup-btn {
         padding: 16px 25px;
       }
     }
@@ -174,12 +212,10 @@
 
   <audio id="clickSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_3e5a4c1a21.mp3" preload="auto"></audio>
 
-  <!-- Sua foto de perfil do YouTube -->
   <img src="https://yt3.googleusercontent.com/cnY7RLWN-GyZ8f2Za63Z13l4GRageIFoTt96i3u92dBCEygwHLxHabGTjLqZ3LAmXthoymI6=s160-c-k-c0x00ffffff-no-rj" alt="Chihuahua" class="profile-pic">
   
   <h1>Saudações meros mortais<br>eu sou a Chihuahua :)</h1>
 
-  <!-- Redes sociais movidas para cima -->
   <div class="socials">
     <a href="https://www.youtube.com/@bychihuahua" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
     <a href="https://www.instagram.com/bychihuahua" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
@@ -207,26 +243,68 @@
 
   <div class="section-title">O meu setup</div>
   
-  <div class="setup-card">
-    <div class="setup-item"><strong>Mouse:</strong> M75 Air Corsair + Logitech MX Master 2</div>
-    <div class="setup-item"><strong>Teclado:</strong> K65 RGB Mini Corsair</div>
-    <div class="setup-item"><strong>Headset:</strong> VOID WIRELESS v2</div>
-    <div class="setup-item"><strong>Monitor:</strong> HP X24ih</div>
-    <div class="setup-item"><strong>Mousepad:</strong> X-raypad Equate Plus v2 Kiwami</div>
+  <div class="setup-container">
+    <a class="setup-btn" href="https://tidd.ly/4dGYpJk" target="_blank" rel="noopener noreferrer">
+      <div class="btn-content">M75 Air Corsair</div>
+      <img src="https://img.pccomponentes.com/articles/1093/10938512/1419-corsair-m75-air-wireless-raton-gaming-inalambrico-ultraligero-26000-dpi-negro.jpg" alt="M75 Air Corsair" class="product-img">
+    </a>
+    
+    <a class="setup-btn" href="https://tidd.ly/4e9QN2P" target="_blank" rel="noopener noreferrer">
+      <div class="btn-content">Logitech MX Master 2</div>
+      <img src="https://img.pccomponentes.com/articles/16/165511/1.jpg" alt="Logitech MX Master 2" class="product-img">
+    </a>
+    
+    <a class="setup-btn" href="https://tidd.ly/43ZsgJc" target="_blank" rel="noopener noreferrer">
+      <div class="btn-content">K65 RGB Mini Corsair</div>
+      <img src="https://img.pccomponentes.com/articles/1073/10737998/1419-corsair-k65-rgb-mini-teclado-mecanico-gaming-rgb-switch-cherry-mx-red-65-format-negro.jpg" alt="K65 RGB Mini Corsair" class="product-img">
+    </a>
+    
+    <a class="setup-btn" href="https://tidd.ly/4mZWAfh" target="_blank" rel="noopener noreferrer">
+      <div class="btn-content">VOID WIRELESS v2</div>
+      <img src="https://img.pcdiga.com/media/catalog/product/cache/4e5b5a0cb0cf4b2ec0f5a7d6685d2379/c/o/corsair-void-wireless-bluetooth-v2-black-ca-9011379-ww-840440484196_1.jpg" alt="VOID WIRELESS v2" class="product-img">
+    </a>
+    
+    <a class="setup-btn" href="https://tidd.ly/4l6UXLh" target="_blank" rel="noopener noreferrer">
+      <div class="btn-content">HP X24ih</div>
+      <img src="https://img.pccomponentes.com/articles/1061/10619592/1419-hp-omen-24i-238-ips-fullhd-165hz-freesync-premium.jpg" alt="HP X24ih" class="product-img">
+    </a>
+    
+    <a class="setup-btn" href="https://gamerunlocked.pt/en/product/x-raypad-equate-plus-v2-mousepad/" target="_blank" rel="noopener noreferrer">
+      <div class="btn-content">X-raypad Equate Plus v2 Kiwami</div>
+      <img src="https://mechkeys.com/cdn/shop/products/X-raypad-Equate-Plus-v2-Kiwami-Gaming-Mouse-Pad-1.jpg" alt="X-raypad Equate Plus v2 Kiwami" class="product-img">
+    </a>
   </div>
 
   <div class="section-title">O meu PC - ASUS TUF Gaming A15</div>
   
-  <div class="setup-card">
-    <div class="setup-item"><strong>GPU:</strong> GeForce RTX™ 4050 Laptop</div>
-    <div class="setup-item"><strong>CPU:</strong> AMD Ryzen™ 7 7735HS (8-cores/16-threads, cache 16MB L3, max boost até 4.7 GHz)</div>
-    <div class="setup-item"><strong>Bateria:</strong> Alta capacidade 90Wh</div>
-    <div class="setup-item"><strong>Carregamento:</strong> Rápido USB Type-C</div>
-    <div class="setup-item"><strong>Arrefecimento:</strong> Ventoinhas Arc-Flow de 84 pás e 4 saídas de ar</div>
-    <div class="setup-item"><strong>Mux Switch:</strong> Com NVIDIA Advanced Optimus</div>
-    <div class="setup-item"><strong>Ecrã:</strong> 15,6" FHD de 144 Hz</div>
-    <div class="setup-item"><strong>Resistência:</strong> Nível militar MIL-STD-810H</div>
-    <div class="setup-item"><strong>Sistema Operativo:</strong> Windows 11 Home</div>
+  <div class="setup-container">
+    <div class="setup-btn">
+      <div class="btn-content"><strong>GPU:</strong> GeForce RTX™ 4050 Laptop</div>
+    </div>
+    <div class="setup-btn">
+      <div class="btn-content"><strong>CPU:</strong> AMD Ryzen™ 7 7735HS (8-cores/16-threads, cache 16MB L3, max boost até 4.7 GHz)</div>
+    </div>
+    <div class="setup-btn">
+      <div class="btn-content"><strong>Bateria:</strong> Alta capacidade 90Wh</div>
+    </div>
+    <div class="setup-btn">
+      <div class="btn-content"><strong>Carregamento:</strong> Rápido USB Type-C</div>
+    </div>
+    <div class="setup-btn">
+      <div class="btn-content"><strong>Arrefecimento:</strong> Ventoinhas Arc-Flow de 84 pás e 4 saídas de ar</div>
+    </div>
+    <div class="setup-btn">
+      <div class="btn-content"><strong>Mux Switch:</strong> Com NVIDIA Advanced Optimus</div>
+    </div>
+    <div class="setup-btn">
+      <div class="btn-content"><strong>Ecrã:</strong> 15,6" FHD de 144 Hz</div>
+    </div>
+    <div class="setup-btn">
+      <div class="btn-content"><strong>Resistência:</strong> Nível militar MIL-STD-810H</div>
+    </div>
+    <div class="setup-btn">
+      <div class="btn-content"><strong>Sistema Operativo:</strong> Windows 11 Home</div>
+    </div>
   </div>
 
   <div class="footer">© 2025 Chihuahua Games. Todos os direitos reservados.</div>
