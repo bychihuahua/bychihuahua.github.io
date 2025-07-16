@@ -60,6 +60,7 @@
       align-items: center;
       justify-content: center;
       border: 1px solid #333;
+      position: relative;
     }
 
     .socials a:hover {
@@ -67,6 +68,17 @@
       color: #fff;
       background-color: #8001ff;
       border-color: #8001ff;
+    }
+
+    .social-icon {
+      width: 24px;
+      height: 24px;
+      filter: invert(16%) sepia(99%) saturate(5915%) hue-rotate(274deg) brightness(100%) contrast(108%);
+      transition: all 0.3s ease;
+    }
+
+    .socials a:hover .social-icon {
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
     }
 
     .btn-container {
@@ -217,10 +229,18 @@
   <h1>Saudações meros mortais<br>eu sou a Chihuahua :)</h1>
 
   <div class="socials">
-    <a href="https://www.youtube.com/@bychihuahua" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.instagram.com/bychihuahua" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.tiktok.com/@bychihuahua" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
-    <a href="https://www.twitch.tv/bychihuahuatv" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitch"></i></a>
+    <a href="https://www.youtube.com/@bychihuahua" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/152/152810.png" alt="YouTube" class="social-icon">
+    </a>
+    <a href="https://www.instagram.com/bychihuahua" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/4922/4922972.png" alt="Instagram" class="social-icon">
+    </a>
+    <a href="https://www.tiktok.com/@bychihuahua" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/1946/1946552.png" alt="TikTok" class="social-icon">
+    </a>
+    <a href="https://www.twitch.tv/bychihuahuatv" target="_blank" rel="noopener noreferrer">
+      <img src="https://img.icons8.com/win10/512/twitch.png" alt="Twitch" class="social-icon">
+    </a>
   </div>
 
   <div class="btn-container">
