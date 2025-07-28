@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete MediaKit - YouTube & TikTok</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --youtube: #FF0000;
+            --tiktok: #000000;
+            --accent: #25F4EE;
+            --light: #f9f9f9;
+            --dark: #333333;
+            --mobile-breakpoint: 768px;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.5;
+            color: var(--dark);
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 100%;
+            padding: 15px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px 15px;
+            background: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            width: 100%;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--dark);
+            margin-top: 0;
+        }
+        
+        h1 {
+            background: linear-gradient(90deg, var(--youtube), var(--tiktok));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+        
+        .platform-tabs {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 5px;
+        }
+        
+        .platform-tabs::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        .tab-home.active {
+            border-bottom-color: #666;
+        }
+        
+        .tab-youtube.active {
+            border-bottom-color: var(--youtube);
+        }
+        
+        .tab-tiktok.active {
+            border-bottom-color: var(--tiktok);
+        }
+        
+        .section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            width: 100%;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 480px) {
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .metric-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            min-width: 0;
+        }
+        
+        .metric-card.youtube {
+            border-left: 3px solid var(--youtube);
+        }
+        
+        .metric-card.tiktok {
+            border-left: 3px solid var(--tiktok);
+        }
+        
+        .metric-card h3 {
+            margin: 0 0 5px 0;
+            color: var(--dark);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 5px 0;
+            line-height: 1.2;
+        }
+        
+        .youtube .metric-value {
+            color: var(--youtube);
+        }
+        
+        .tiktok .metric-value {
+            color: var(--tiktok);
+        }
+        
+        .metric-card p {
+            margin: 5px 0 0 0;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+            width: 100%;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.8rem;
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+            min-width: 80px;
+        }
+        
+        th {
+            background-color: var(--light);
+            font-weight: 600;
+            color: var(--dark);
+            position: sticky;
+            top: 0;
+        }
+        
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .comparison-section {
+            background: linear-gradient(135deg, rgba(255,0,0,0.03) 0%, rgba(0,0,0,0.03) 100%);
+        }
+        
+        .platform-section {
+            display: none;
+        }
+        
+        .platform-section.active {
+            display: block;
+        }
+        
+        /* Home section styles */
+        .highlights-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .highlight-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .highlight-card h3 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .highlight-card .icon {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .yt-icon {
+            color: var(--youtube);
+        }
+        
+        .tt-icon {
+            color: var(--tiktok);
+        }
+        
+        .summary-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .summary-stat {
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            background: #f9f9f9;
+        }
+        
+        .summary-stat .value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .summary-stat .label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 480px) {
+            .chart-container {
+                height: 250px;
+            }
+            
+            header {
+                padding: 15px 10px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+            
+            .summary-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Social MediaKit</h1>
+            <p>YouTube & TikTok Analytics | June/July 2025</p>
+        </header>
+
+        <div class="platform-tabs">
+            <div class="tab tab-home active" onclick="showPlatform('home')">Home</div>
+            <div class="tab tab-youtube" onclick="showPlatform('youtube')">YouTube</div>
+            <div class="tab tab-tiktok" onclick="showPlatform('tiktok')">TikTok</div>
+            <div class="tab" onclick="showPlatform('comparison')">Compare</div>
+        </div>
+
+        <!-- Home Section -->
+        <div id="home-section" class="platform-section active">
+            <div class="section">
+                <h2>Overview</h2>
+                <p>Executive summary of performance metrics on YouTube and TikTok platforms.</p>
+                
+                <div class="highlights-container">
+                    <div class="highlight-card">
+                        <h3><span class="icon yt-icon">▶️</span> YouTube Performance</h3>
+                        <div class="summary-stats">
+                            <div class="summary-stat">
+                                <div class="value" style="color: var(--youtube);">2,450</div>
+                                <div class="label">Views</div>
+                            </div>
+                            <div class="summary-stat">
+                                <div class="value" style="color: var(--youtube);">12.3h</div>
+                                <div class="label">Watch time</div>
+                            </div>
+                            <div class="summary-stat">
+                                <div class="value" style="color: var(--youtube);">5.8%</div>
+                                <div class="label">CTR</div>
+                            </div>
+                            <div class="summary-stat">
+                                <div class="value" style="color: var(--youtube);">15.2k</div>
+                                <div class="label">Impressions</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <h3><span class="icon tt-icon">🎵</span> TikTok Performance</h3>
+                        <div class="summary-stats">
+                            <div class="summary-stat">
+                                <div class="value" style="color: var(--tiktok);">42.7k</div>
+                                <div class="label">Views</div>
+                            </div>
+                            <div class="summary-stat">
+                                <div class="value" style="color: var(--tiktok);">1.52k</div>
+                                <div class="label">Likes</div>
+                            </div>
+                            <div class="summary-stat">
+                                <div class="value" style="color: var(--tiktok);">58</div>
+                                <div class="label">Shares</div>
+                            </div>
+                            <div class="summary-stat">
+                                <div class="value" style="color: var(--tiktok);">612</div>
+                                <div class="label">Profile Visits</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <h3>📊 Platform Comparison</h3>
+                        <p>TikTok had <strong>17.4x more views</strong> than YouTube in the analyzed period.</p>
+                        <p>YouTube shows higher <strong>watch time per content</strong> (average 22 seconds per view vs 3 seconds on TikTok).</p>
+                        <p>Both platforms show <strong>engagement peaks on weekends</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- YouTube Section -->
+        <div id="youtube-section" class="platform-section">
+            <div class="section">
+                <h2>YouTube Analytics</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card youtube">
+                        <h3>Total Views</h3>
+                        <div class="metric-value">2,450</div>
+                        <p>Period: All time</p>
+                    </div>
+                    <div class="metric-card youtube">
+                        <h3>Watch Time</h3>
+                        <div class="metric-value">12.3h</div>
+                        <p>Total hours watched</p>
+                    </div>
+                    <div class="metric-card youtube">
+                        <h3>Click-Through Rate</h3>
+                        <div class="metric-value">5.8%</div>
+                        <p>Average CTR on videos</p>
+                    </div>
+                    <div class="metric-card youtube">
+                        <h3>Impressions</h3>
+                        <div class="metric-value">15,200</div>
+                        <p>Total impressions</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Daily Views (June/July 2025)</h2>
+                <div class="chart-container">
+                    <canvas id="youtubeDailyViewsChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- TikTok Section -->
+        <div id="tiktok-section" class="platform-section">
+            <div class="section">
+                <h2>TikTok Analytics</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card tiktok">
+                        <h3>Video Views</h3>
+                        <div class="metric-value">42,700</div>
+                        <p>Total in period</p>
+                    </div>
+                    <div class="metric-card tiktok">
+                        <h3>Profile Views</h3>
+                        <div class="metric-value">612</div>
+                        <p>Total in period</p>
+                    </div>
+                    <div class="metric-card tiktok">
+                        <h3>Likes</h3>
+                        <div class="metric-value">1,520</div>
+                        <p>Total in period</p>
+                    </div>
+                    <div class="metric-card tiktok">
+                        <h3>Shares</h3>
+                        <div class="metric-value">58</div>
+                        <p>Total in period</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Daily Engagement (June/July 2025)</h2>
+                <div class="chart-container">
+                    <canvas id="tiktokEngagementChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Section -->
+        <div id="comparison-section" class="platform-section">
+            <div class="section comparison-section">
+                <h2>Platform Comparison</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3>Total Views</h3>
+                        <div class="metric-value" style="color: var(--tiktok);">42,700</div>
+                        <div class="metric-value" style="color: var(--youtube);">2,450</div>
+                        <p>TikTok vs YouTube</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Relative Engagement</h3>
+                        <div class="metric-value" style="color: var(--tiktok);">3.6%</div>
+                        <div class="metric-value" style="color: var(--youtube);">5.8%</div>
+                        <p>(Likes/Views) vs (Watch Time/Views)</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Best Day</h3>
+                        <div style="color: var(--tiktok);">06/15 - 2,450 views</div>
+                        <div style="color: var(--youtube);">06/22 - 145 views</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Ideal Frequency</h3>
+                        <div style="color: var(--tiktok);">3-5 posts/day</div>
+                        <div style="color: var(--youtube);">2-3 posts/week</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section comparison-section">
+                <h2>Daily Views Comparison</h2>
+                <div class="chart-container">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show section based on selection
+        function showPlatform(platform) {
+            document.querySelectorAll('.platform-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.getElementById(platform + '-section').classList.add('active');
+            document.querySelector('.tab-' + (platform === 'comparison' ? '' : platform)).classList.add('active');
+            
+            // Redraw charts when visible
+            setTimeout(() => {
+                if (youtubeDailyViewsChart) youtubeDailyViewsChart.resize();
+                if (tiktokEngagementChart) tiktokEngagementChart.resize();
+                if (comparisonChart) comparisonChart.resize();
+            }, 300);
+        }
+
+        // Common mobile chart settings
+        const mobileChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        boxWidth: 12,
+                        padding: 10,
+                        font: {
+                            size: 12
+                        }
+                    }
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    bodyFont: {
+                        size: 12
+                    },
+                    titleFont: {
+                        size: 12
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        font: {
+                            size: 10
+                        }
+                    }
+                },
+                x: {
+                    ticks: {
+                        font: {
+                            size: 10
+                        },
+                        maxRotation: 45,
+                        minRotation: 45
+                    }
+                }
+            }
+        };
+
+        // YouTube Chart
+        const youtubeCtx = document.getElementById('youtubeDailyViewsChart').getContext('2d');
+        const youtubeDailyViewsChart = new Chart(youtubeCtx, {
+            type: 'line',
+            data: {
+                labels: ['06/06', '07/06', '08/06', '09/06', '10/06', '11/06', '12/06', '13/06', '14/06', '15/06', '16/06', '17/06', '18/06', '19/06', '20/06', '21/06', '22/06', '23/06', '24/06', '25/06', '26/06', '27/06', '28/06', '29/06', '30/06', '01/07', '02/07', '03/07'],
+                datasets: [{
+                    label: 'Views',
+                    data: [85, 120, 82, 85, 102, 67, 103, 75, 96, 145, 73, 63, 53, 85, 78, 67, 110, 64, 64, 57, 88, 56, 58, 85, 77, 70, 68, 60],
+                    backgroundColor: 'rgba(255, 0, 0, 0.1)',
+                    borderColor: 'rgba(255, 0, 0, 1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: mobileChartOptions
+        });
+
+        // TikTok Chart
+        const tiktokCtx = document.getElementById('tiktokEngagementChart').getContext('2d');
+        const tiktokEngagementChart = new Chart(tiktokCtx, {
+            type: 'bar',
+            data: {
+                labels: ['05/06', '06/06', '07/06', '08/06', '09/06', '10/06', '11/06', '12/06', '13/06', '14/06', '15/06', '16/06', '17/06', '18/06', '19/06', '20/06', '21/06', '22/06', '23/06', '24/06', '25/06', '26/06', '27/06', '28/06', '29/06', '30/06', '01/07', '02/07'],
+                datasets: [{
+                    label: 'Views',
+                    data: [2450, 1450, 1680, 1450, 1460, 1380, 1120, 1610, 1030, 1040, 2090, 1300, 1600, 1590, 1220, 1470, 1080, 1150, 1150, 1130, 1780, 1470, 1120, 1810, 1350, 1500, 1280, 1950],
+                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                    borderColor: 'rgba(0, 0, 0, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Likes',
+                    data: [154, 48, 43, 33, 58, 37, 35, 92, 26, 30, 71, 38, 75, 96, 38, 57, 33, 33, 30, 28, 81, 41, 28, 80, 46, 51, 38, 113],
+                    backgroundColor: 'rgba(37, 244, 238, 0.7)',
+                    borderColor: 'rgba(37, 244, 238, 1)',
+                    borderWidth: 1,
+                    type: 'line',
+                    tension: 0.3
+                }]
+            },
+            options: mobileChartOptions
+        });
+
+        // Comparison Chart
+        const comparisonCtx = document.getElementById('comparisonChart').getContext('2d');
+        const comparisonChart = new Chart(comparisonCtx, {
+            type: 'line',
+            data: {
+                labels: ['05/06', '06/06', '07/06', '08/06', '09/06', '10/06', '11/06', '12/06', '13/06', '14/06', '15/06', '16/06', '17/06', '18/06', '19/06', '20/06', '21/06', '22/06', '23/06', '24/06', '25/06', '26/06', '27/06', '28/06', '29/06', '30/06', '01/07', '02/07'],
+                datasets: [{
+                    label: 'TikTok',
+                    data: [2450, 1450, 1680, 1450, 1460, 1380, 1120, 1610, 1030, 1040, 2090, 1300, 1600, 1590, 1220, 1470, 1080, 1150, 1150, 1130, 1780, 1470, 1120, 1810, 1350, 1500, 1280, 1950],
+                    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                    borderColor: 'rgba(0, 0, 0, 1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    yAxisID: 'y'
+                }, {
+                    label: 'YouTube',
+                    data: [0, 85, 120, 82, 85, 102, 67, 103, 75, 96, 145, 73, 63, 53, 85, 78, 67, 110, 64, 64, 57, 88, 56, 58, 85, 77, 70, 68],
+                    backgroundColor: 'rgba(255, 0, 0, 0.1)',
+                    borderColor: 'rgba(255, 0, 0, 1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    yAxisID: 'y1'
+                }]
+            },
+            options: {
+                ...mobileChartOptions,
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'TikTok'
+                        },
+                        ticks: {
+                            font: {
+                                size: 10
+                            }
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'YouTube'
+                        },
+                        grid: {
+                            drawOnChartArea: false,
+                        },
+                        ticks: {
+                            font: {
+                                size: 10
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 10
+                            },
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    }
+                }
+            }
+        });
+
+        // Resize charts when window changes size
+        window.addEventListener('resize', function() {
+            if (youtubeDailyViewsChart) youtubeDailyViewsChart.resize();
+            if (tiktokEngagementChart) tiktokEngagementChart.resize();
+            if (comparisonChart) comparisonChart.resize();
+        });
+    </script>
+</body>
+</html>
