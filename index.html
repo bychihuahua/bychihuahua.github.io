@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-7634353064287764">
   <meta charset="UTF-8">
-  <title>Chihuahua Games</title>
+  <title>Produtos - Chihuahua Games</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
@@ -15,86 +15,113 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px 15px;
+      padding: 30px 15px;
       min-height: 100vh;
       box-sizing: border-box;
       background-image: linear-gradient(to bottom, #1a1a1a, #000);
     }
 
     .profile-pic {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #8001ff;
+      border: 2px solid #8001ff;
       margin-bottom: 15px;
     }
 
     h1 {
-      color: #fff;
-      margin-bottom: 15px;
+      color: #8001ff;
+      margin-bottom: 20px;
       text-align: center;
-      font-size: clamp(20px, 6vw, 28px);
-      line-height: 1.3;
+      font-size: clamp(24px, 6vw, 32px);
       padding: 0 10px;
       font-weight: normal;
     }
 
-    .socials {
-      display: flex;
-      gap: 15px;
-      margin: 20px 0;
-      flex-wrap: wrap;
-      justify-content: center;
+    .search-container {
+      max-width: 500px;
+      margin: 0 auto 25px;
+      padding: 0 15px;
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    .socials a {
-      color: #8001ff;
-      font-size: clamp(20px, 6vw, 24px);
-      transition: all 0.3s ease;
-      background-color: #1a1a1a;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    input[type="text"] {
+      padding: 14px 20px;
+      width: 100%;
       border: 1px solid #333;
-      position: relative;
-    }
-
-    .socials a:hover {
-      transform: scale(1.1);
+      border-radius: 10px;
+      outline: none;
+      font-size: clamp(14px, 4vw, 16px);
+      background-color: #1a1a1a;
       color: #fff;
-      background-color: #8001ff;
+      transition: all 0.3s;
+    }
+
+    input[type="text"]:focus {
       border-color: #8001ff;
+      box-shadow: 0 0 0 2px rgba(128, 1, 255, 0.3);
     }
 
-    .social-icon {
-      width: 24px;
-      height: 24px;
-      filter: invert(16%) sepia(99%) saturate(5915%) hue-rotate(274deg) brightness(100%) contrast(108%);
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 15px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 15px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .product-card {
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      padding: 12px;
       transition: all 0.3s ease;
+      cursor: pointer;
+      overflow: hidden;
+      border: 1px solid #333;
+      display: flex;
+      flex-direction: column;
     }
 
-    .socials a:hover .social-icon {
-      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    .product-card:hover {
+      transform: translateY(-5px);
+      border-color: #8001ff;
+      box-shadow: 0 5px 15px rgba(128, 1, 255, 0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      margin-bottom: 12px;
+    }
+
+    .product-name {
+      margin-top: auto;
+      font-weight: normal;
+      color: #fff;
+      font-size: clamp(14px, 4vw, 15px);
+      text-align: center;
+      padding: 0 5px;
     }
 
     .btn-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      margin-top: 40px;
       width: 100%;
       max-width: 500px;
-      gap: 15px;
-      margin-bottom: 20px;
+      padding: 0 15px;
     }
 
-    .btn {
+    .voltar {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       padding: 15px 20px;
       background-color: #1a1a1a;
       color: white;
@@ -103,102 +130,20 @@
       font-weight: normal;
       transition: all 0.3s ease;
       width: 100%;
-      text-align: left;
-      box-sizing: border-box;
-      font-size: clamp(14px, 4vw, 16px);
-      border: 1px solid #333;
-    }
-
-    .btn:hover {
-      background-color: #8001ff;
-      transform: translateY(-2px);
-      border-color: #8001ff;
-    }
-
-    .btn i {
-      margin-right: 12px;
-      font-size: 20px;
-    }
-
-    .btn .arrow {
-      font-size: 14px;
-      opacity: 0.7;
-    }
-
-    .section-title {
-      color: #8001ff;
-      font-size: clamp(16px, 4vw, 18px);
-      margin: 30px 0 15px;
-      width: 100%;
-      max-width: 500px;
-      text-align: left;
-      padding-left: 10px;
-    }
-
-    .footer {
-      margin-top: 50px;
-      color: #555;
-      font-size: clamp(12px, 3vw, 14px);
       text-align: center;
-      padding: 0 20px;
-      width: 100%;
-    }
-
-    .setup-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      max-width: 500px;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .setup-btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 20px;
-      background-color: #1a1a1a;
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-      width: 100%;
-      text-align: left;
       box-sizing: border-box;
       font-size: clamp(14px, 4vw, 16px);
       border: 1px solid #333;
-      position: relative;
-      overflow: hidden;
-      padding-right: 70px;
     }
 
-    .setup-btn:hover {
+    .voltar:hover {
       background-color: #8001ff;
       transform: translateY(-2px);
       border-color: #8001ff;
     }
 
-    .setup-btn .arrow {
-      display: none;
-    }
-
-    .product-img {
-      position: absolute;
-      right: 15px;
-      height: 40px;
-      width: auto;
-      max-width: 60px;
-      object-fit: contain;
-      opacity: 1;
-      z-index: 2;
-      border-radius: 4px;
-      background: rgba(255,255,255,0.1);
-    }
-
-    .btn-content {
-      z-index: 2;
+    .voltar i {
+      margin-right: 10px;
     }
 
     /* Tablet */
@@ -207,15 +152,24 @@
         padding: 30px 20px;
       }
       
-      .btn, .setup-btn {
-        padding: 16px 25px;
+      .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+      }
+      
+      .product-card {
+        padding: 15px;
       }
     }
 
     /* Desktop */
     @media (min-width: 1024px) {
       body {
-        padding: 40px 20px;
+        padding: 40px;
+      }
+      
+      .product-grid {
+        gap: 25px;
       }
     }
   </style>
@@ -224,126 +178,116 @@
 
   <audio id="clickSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_3e5a4c1a21.mp3" preload="auto"></audio>
 
+  <!-- Cabeçalho consistente com a página principal -->
   <img src="https://yt3.googleusercontent.com/cnY7RLWN-GyZ8f2Za63Z13l4GRageIFoTt96i3u92dBCEygwHLxHabGTjLqZ3LAmXthoymI6=s160-c-k-c0x00ffffff-no-rj" alt="Chihuahua" class="profile-pic">
   
-  <h1>Saudações meros mortais<br>eu sou a Chihuahua :)</h1>
+  <h1>Qual o produto que estás à procura?</h1>
 
-  <div class="socials">
-    <a href="https://www.youtube.com/@bychihuahua" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/152/152810.png" alt="YouTube" class="social-icon">
-    </a>
-    <a href="https://www.instagram.com/bychihuahua" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/4922/4922972.png" alt="Instagram" class="social-icon">
-    </a>
-    <a href="https://www.tiktok.com/@bychihuahua" target="_blank" rel="noopener noreferrer">
-      <img src="https://cdn-icons-png.flaticon.com/512/1946/1946552.png" alt="TikTok" class="social-icon">
-    </a>
-    <a href="https://www.twitch.tv/bychihuahuatv" target="_blank" rel="noopener noreferrer">
-      <img src="https://img.icons8.com/win10/512/twitch.png" alt="Twitch" class="social-icon">
-    </a>
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="🔍 Pesquisar produtos..." onkeyup="filterProducts()">
   </div>
+
+  <div id="product-grid" class="product-grid"></div>
 
   <div class="btn-container">
-    <a class="btn" href="produtos.html">
-      <div>
-        <i class="fas fa-headphones"></i>
-        Ver Produtos
-      </div>
-      <div class="arrow">→</div>
-    </a>
-    
-    <a class="btn" href="https://www.eneba.com/pt/?af_id=ChihuahuaGames&utm_medium=infl&utm_source=ChihuahuaGames" target="_blank" rel="noopener noreferrer">
-      <div>
-        <i class="fas fa-gamepad"></i>
-        Ir para a Eneba
-      </div>
-      <div class="arrow">→</div>
-    </a>
-
-    <!-- Novo botão para Media Kit -->
-    <a class="btn" href="Media Kit.html">
-      <div>
-        <i class="fas fa-file-alt"></i>
-        Media Kit
-      </div>
-      <div class="arrow">→</div>
-    </a>
+    <a class="voltar" href="index.html"><i class="fas fa-arrow-left"></i>Voltar à Página Principal</a>
   </div>
-
-  <div class="section-title">O meu setup</div>
-  
-  <div class="setup-container">
-    <a class="setup-btn" href="https://tidd.ly/4dGYpJk" target="_blank" rel="noopener noreferrer">
-      <div class="btn-content">M75 Air Corsair</div>
-      <img src="https://thumb.pccomponentes.com/w-530-530/articles/1078/10785900/3144-corsair-m75-air-wireless-raton-gaming-inalambrico-ultraligero-negro-26000ppp-mejor-precio.jpg" alt="M75 Air Corsair" class="product-img">
-    </a>
-    
-    <a class="setup-btn" href="https://tidd.ly/4e9QN2P" target="_blank" rel="noopener noreferrer">
-      <div class="btn-content">Logitech MX Master 2</div>
-      <img src="https://thumb.pccomponentes.com/w-530-530/articles/1080/10800295/1157-logitech-mx-master-2s-raton-wireless-4000-dpi-negro.jpg" alt="Logitech MX Master 2" class="product-img">
-    </a>
-    
-    <a class="setup-btn" href="https://tidd.ly/43ZsgJc" target="_blank" rel="noopener noreferrer">
-      <div class="btn-content">K65 RGB Mini Corsair</div>
-      <img src="https://img.pccomponentes.com/articles/1009/10097595/1956-corsair-k65-mini-teclado-mecanico-gaming-rgb-switch-cherry-mx-red-negro.jpg" alt="K65 RGB Mini Corsair" class="product-img">
-    </a>
-    
-    <a class="setup-btn" href="https://tidd.ly/4mZWAfh" target="_blank" rel="noopener noreferrer">
-      <div class="btn-content">VOID WIRELESS v2</div>
-      <img src="https://lojae-s3-prd-files.radiopopular.pt/files/static/images/products/126306_0.jpg" alt="VOID WIRELESS v2" class="product-img">
-    </a>
-    
-    <a class="setup-btn" href="https://tidd.ly/4l6UXLh" target="_blank" rel="noopener noreferrer">
-      <div class="btn-content">HP X24ih</div>
-      <img src="https://thumb.pccomponentes.com/w-530-530/articles/1073/10734316/1382-hp-omen-24-238-ips-fullhd-165hz-freesync-premium.jpg" alt="HP X24ih" class="product-img">
-    </a>
-    
-    <a class="setup-btn" href="https://gamerunlocked.pt/en/product/x-raypad-equate-plus-v2-mousepad/" target="_blank" rel="noopener noreferrer">
-      <div class="btn-content">X-raypad Equate Plus v2 Kiwami</div>
-      <img src="https://m.media-amazon.com/images/I/71DpmPskmcL.jpg" alt="X-raypad Equate Plus v2 Kiwami" class="product-img">
-    </a>
-  </div>
-
-  <div class="section-title">O meu PC - ASUS TUF Gaming A15</div>
-  
-  <div class="setup-container">
-    <div class="setup-btn">
-      <div class="btn-content"><strong>GPU:</strong> GeForce RTX™ 4050 Laptop</div>
-    </div>
-    <div class="setup-btn">
-      <div class="btn-content"><strong>CPU:</strong> AMD Ryzen™ 7 7735HS (8-cores/16-threads, cache 16MB L3, max boost até 4.7 GHz)</div>
-    </div>
-    <div class="setup-btn">
-      <div class="btn-content"><strong>Bateria:</strong> Alta capacidade 90Wh</div>
-    </div>
-    <div class="setup-btn">
-      <div class="btn-content"><strong>Carregamento:</strong> Rápido USB Type-C</div>
-    </div>
-    <div class="setup-btn">
-      <div class="btn-content"><strong>Arrefecimento:</strong> Ventoinhas Arc-Flow de 84 pás e 4 saídas de ar</div>
-    </div>
-    <div class="setup-btn">
-      <div class="btn-content"><strong>Mux Switch:</strong> Com NVIDIA Advanced Optimus</div>
-    </div>
-    <div class="setup-btn">
-      <div class="btn-content"><strong>Ecrã:</strong> 15,6" FHD de 144 Hz</div>
-    </div>
-    <div class="setup-btn">
-      <div class="btn-content"><strong>Resistência:</strong> Nível militar MIL-STD-810H</div>
-    </div>
-    <div class="setup-btn">
-      <div class="btn-content"><strong>Sistema Operativo:</strong> Windows 11 Home</div>
-    </div>
-  </div>
-
-  <div class="footer">© 2025 Chihuahua Games. Todos os direitos reservados.</div>
 
   <script>
+    const products = [
+      { 
+        name: "KZ EDX PRO", 
+        link: "https://tidd.ly/3Y4v0mn", 
+        img: "https://img.gkbcdn.com/p/2022-03-22/KZ-EDX-Pro-Wired-Earphone-In-ear-with-Mic-Black-498138-0._w500_p1_.jpg" 
+      },
+      { 
+        name: "KZ AZ09 Bluetooth", 
+        link: "https://tidd.ly/4cIzXqY", 
+        img: "https://m.media-amazon.com/images/I/618NWjBPN4S.jpg" 
+      },
+      { 
+        name: "KZ Fio Tipo C", 
+        link: "https://a.aliexpress.com/_EJUc6CS", 
+        img: "https://m.media-amazon.com/images/I/61HDJy0aMtL._AC_UF894,1000_QL80_.jpg" 
+      },
+      { 
+        name: "Monitor MSI PRO", 
+        link: "https://tidd.ly/4kKoo5w", 
+        img: "https://thumb.pccomponentes.com/w-530-530/articles/1085/10852968/1594-msi-pro-mp251w-e2-245-led-ips-fullhd-120hz.jpg" 
+      },
+      { 
+        name: "DELUX M900Pro", 
+        link: "https://www.awin1.com/cread.php?awinmid=10748&awinaffid=1206502&ued=https%3A%2F%2Fa.aliexpress.com%2F_Ewrptjs", 
+        img: "https://www.deluxworld.com/uploads/admin/image/20240511/M900Pro红(660X660).png" 
+      },
+      { 
+        name: "Suporte laptop ajustável", 
+        link: "https://tidd.ly/3I19FVL", 
+        img: "https://img.joomcdn.net/21ddacc16cbdc2ac2e9556f934824748567af62a_original.jpeg" 
+      },
+      { 
+        name: "Suporte laptop 2 peças", 
+        link: "https://tidd.ly/4l0Kkd5", 
+        img: "https://img.joomcdn.net/b94c9449d7b2b657a08e96b9357befc0e2b0c4fa_original.jpeg" 
+      },
+      { 
+        name: "Suporte laptop Simples", 
+        link: "https://tidd.ly/4l148gp", 
+        img: "https://baseusonline.com/uploads/img/pi/168/168984165659/1689841656.jpg" 
+      },
+      { 
+        name: "Powerbank", 
+        link: "https://tidd.ly/45GGxNp", 
+        img: "https://img.tvcmall.com/dynamic/uploads/details/740x740_6632000872A-1.webp" 
+      },
+      { 
+        name: "Ajazz AK820", 
+        link: "https://www.awin1.com/cread.php?awinmid=10748&awinaffid=1206502&ued=https%3A%2F%2Fpt.aliexpress.com%2Fitem%2F1005008925610136.html", 
+        img: "https://ajazzstore.com/cdn/shop/files/203A9817.jpg?v=1734504850" 
+      }
+    ];
+
+    const grid = document.getElementById("product-grid");
+
+    function showProducts(list) {
+      grid.innerHTML = "";
+      list.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.onclick = () => {
+          clickSound.currentTime = 0;
+          clickSound.play();
+          setTimeout(() => window.open(product.link, "_blank"), 200);
+        };
+        card.innerHTML = `
+          <img src="${product.img}" alt="${product.name}" loading="lazy">
+          <div class="product-name">${product.name}</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterProducts() {
+      const query = document.getElementById("search-input").value.toLowerCase();
+      const filtered = products.filter(p => p.name.toLowerCase().includes(query));
+      showProducts(filtered);
+    }
+
+    // Mostra todos os produtos no início
+    showProducts(products);
+
+    // Som ao clicar
     const clickSound = document.getElementById("clickSound");
     document.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        clickSound.currentTime = 0;
-        clickSound.play();
+      link.addEventListener("click", (e) => {
+        if (!link.href.includes("javascript:")) {
+          e.preventDefault();
+          clickSound.currentTime = 0;
+          clickSound.play();
+          setTimeout(() => {
+            window.location.href = link.href;
+          }, 200);
+        }
       });
     });
   </script>
