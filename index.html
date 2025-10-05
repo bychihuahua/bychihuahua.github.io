@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -53,21 +52,33 @@
       color: #8001ff;
       font-size: clamp(20px, 6vw, 24px);
       transition: all 0.3s ease;
-      background-color: #1a1a1a;
+      background-color: transparent;
       width: 45px;
       height: 45px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid #333;
+      border: none;
     }
 
     .socials a:hover {
       transform: scale(1.1);
       color: #fff;
-      background-color: #8001ff;
-      border-color: #8001ff;
+      background-color: transparent;
+      border-color: transparent;
+    }
+
+    .socials img {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) saturate(100%) invert(26%) sepia(95%) saturate(5000%) hue-rotate(265deg) brightness(90%) contrast(100%);
+      transition: all 0.3s ease;
+    }
+
+    .socials a:hover img {
+      filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+      transform: scale(1.1);
     }
 
     .btn-container {
@@ -143,51 +154,58 @@
       margin-bottom: 20px;
     }
 
-    .setup-btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 20px;
+    .setup-box {
       background-color: #1a1a1a;
       color: white;
-      text-decoration: none;
       border-radius: 10px;
-      transition: all 0.3s ease;
       width: 100%;
-      text-align: left;
       box-sizing: border-box;
       font-size: clamp(14px, 4vw, 16px);
       border: 1px solid #333;
-      position: relative;
-      overflow: hidden;
-      padding-right: 70px;
+      padding: 20px;
     }
 
-    .setup-btn:hover {
-      background-color: #8001ff;
-      transform: translateY(-2px);
-      border-color: #8001ff;
+    .setup-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #333;
     }
 
-    .setup-btn .arrow {
-      display: none;
+    .setup-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
     }
 
-    .product-img {
-      position: absolute;
-      right: 15px;
+    .setup-item-img {
       height: 40px;
       width: auto;
       max-width: 60px;
       object-fit: contain;
-      opacity: 1;
-      z-index: 2;
       border-radius: 4px;
       background: rgba(255,255,255,0.1);
+      margin-right: 15px;
     }
 
-    .btn-content {
-      z-index: 2;
+    .setup-item-content {
+      flex: 1;
+    }
+
+    .pc-specs {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .spec-item {
+      padding: 12px 0;
+      border-bottom: 1px solid #333;
+    }
+
+    .spec-item:last-child {
+      border-bottom: none;
     }
 
     /* Tablet */
@@ -196,8 +214,12 @@
         padding: 30px 20px;
       }
       
-      .btn, .setup-btn {
+      .btn {
         padding: 16px 25px;
+      }
+      
+      .setup-box {
+        padding: 25px;
       }
     }
 
@@ -218,10 +240,18 @@
   <h1>Saudações meros mortais<br>eu sou a Chihuahua :)</h1>
 
   <div class="socials">
-    <a href="https://www.youtube.com/@bychihuahua" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.instagram.com/bychihuahua" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.tiktok.com/@bychihuahua" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
-    <a href="https://www.twitch.tv/bychihuahuatv" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitch"></i></a>
+    <a href="https://www.youtube.com/@bychihuahua" target="_blank" rel="noopener noreferrer">
+      <img src="https://www.iconpacks.net/icons/1/free-youtube-icon-123-thumb.png" alt="YouTube">
+    </a>
+    <a href="https://www.instagram.com/bychihuahua" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn-icons-png.flaticon.com/512/717/717392.png" alt="Instagram">
+    </a>
+    <a href="https://www.tiktok.com/@bychihuahua" target="_blank" rel="noopener noreferrer">
+      <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/tiktok-icon.png" alt="TikTok">
+    </a>
+    <a href="https://www.twitch.tv/bychihuahuatv" target="_blank" rel="noopener noreferrer">
+      <img src="https://images.freeimages.com/fic/images/icons/2779/simple_icons/2048/twitch_2048_black.png" alt="Twitch">
+    </a>
   </div>
 
   <div class="btn-container">
@@ -245,66 +275,54 @@
   <div class="section-title">O meu setup</div>
   
   <div class="setup-container">
-    <a class="setup-btn" href="https://tidd.ly/4dGYpJk" target="_blank" rel="noopener noreferrer">
-      <div class="btn-content">M75 Air Corsair</div>
-      <img src="https://img.pccomponentes.com/articles/1093/10938512/1419-corsair-m75-air-wireless-raton-gaming-inalambrico-ultraligero-26000-dpi-negro.jpg" alt="M75 Air Corsair" class="product-img">
-    </a>
-    
-    <a class="setup-btn" href="https://tidd.ly/4e9QN2P" target="_blank" rel="noopener noreferrer">
-      <div class="btn-content">Logitech MX Master 2</div>
-      <img src="https://img.pccomponentes.com/articles/16/165511/1.jpg" alt="Logitech MX Master 2" class="product-img">
-    </a>
-    
-    <a class="setup-btn" href="https://tidd.ly/43ZsgJc" target="_blank" rel="noopener noreferrer">
-      <div class="btn-content">K65 RGB Mini Corsair</div>
-      <img src="https://img.pccomponentes.com/articles/1073/10737998/1419-corsair-k65-rgb-mini-teclado-mecanico-gaming-rgb-switch-cherry-mx-red-65-format-negro.jpg" alt="K65 RGB Mini Corsair" class="product-img">
-    </a>
-    
-    <a class="setup-btn" href="https://tidd.ly/4mZWAfh" target="_blank" rel="noopener noreferrer">
-      <div class="btn-content">VOID WIRELESS v2</div>
-      <img src="https://img.pcdiga.com/media/catalog/product/cache/4e5b5a0cb0cf4b2ec0f5a7d6685d2379/c/o/corsair-void-wireless-bluetooth-v2-black-ca-9011379-ww-840440484196_1.jpg" alt="VOID WIRELESS v2" class="product-img">
-    </a>
-    
-    <a class="setup-btn" href="https://tidd.ly/4l6UXLh" target="_blank" rel="noopener noreferrer">
-      <div class="btn-content">HP X24ih</div>
-      <img src="https://img.pccomponentes.com/articles/1061/10619592/1419-hp-omen-24i-238-ips-fullhd-165hz-freesync-premium.jpg" alt="HP X24ih" class="product-img">
-    </a>
-    
-    <a class="setup-btn" href="https://gamerunlocked.pt/en/product/x-raypad-equate-plus-v2-mousepad/" target="_blank" rel="noopener noreferrer">
-      <div class="btn-content">X-raypad Equate Plus v2 Kiwami</div>
-      <img src="https://mechkeys.com/cdn/shop/products/X-raypad-Equate-Plus-v2-Kiwami-Gaming-Mouse-Pad-1.jpg" alt="X-raypad Equate Plus v2 Kiwami" class="product-img">
-    </a>
+    <div class="setup-box">
+      <div class="setup-item">
+        <img src="https://thumb.pccomponentes.com/w-530-530/articles/1078/10785900/3144-corsair-m75-air-wireless-raton-gaming-inalambrico-ultraligero-negro-26000ppp-mejor-precio.jpg" alt="M75 Air Corsair" class="setup-item-img">
+        <div class="setup-item-content">M75 Air Corsair</div>
+      </div>
+      
+      <div class="setup-item">
+        <img src="https://thumb.pccomponentes.com/w-530-530/articles/1080/10800295/1157-logitech-mx-master-2s-raton-wireless-4000-dpi-negro.jpg" alt="Logitech MX Master 2" class="setup-item-img">
+        <div class="setup-item-content">Logitech MX Master 2</div>
+      </div>
+      
+      <div class="setup-item">
+        <img src="https://img.pccomponentes.com/articles/1009/10097595/1956-corsair-k65-mini-teclado-mecanico-gaming-rgb-switch-cherry-mx-red-negro.jpg" alt="K65 RGB Mini Corsair" class="setup-item-img">
+        <div class="setup-item-content">K65 RGB Mini Corsair</div>
+      </div>
+      
+      <div class="setup-item">
+        <img src="https://www.worten.pt/i/6590538fe5953c934648d83032038c11e34d6623" alt="VOID WIRELESS v2" class="setup-item-img">
+        <div class="setup-item-content">VOID WIRELESS v2</div>
+      </div>
+      
+      <div class="setup-item">
+        <img src="https://thumb.pccomponentes.com/w-530-530/articles/33/334117/3606-hp-x24ih-238-led-ips-fullhd-144hz-freesync-premium-mejor-precio.jpg" alt="HP X24ih" class="setup-item-img">
+        <div class="setup-item-content">HP X24ih</div>
+      </div>
+      
+      <div class="setup-item">
+        <img src="https://m.media-amazon.com/images/I/71DpmPskmcL._UF894,1000_QL80_.jpg" alt="X-raypad Equate Plus v2 Kiwami" class="setup-item-img">
+        <div class="setup-item-content">X-raypad Equate Plus v2 Kiwami</div>
+      </div>
+    </div>
   </div>
 
   <div class="section-title">O meu PC - ASUS TUF Gaming A15</div>
   
   <div class="setup-container">
-    <div class="setup-btn">
-      <div class="btn-content"><strong>GPU:</strong> GeForce RTX™ 4050 Laptop</div>
-    </div>
-    <div class="setup-btn">
-      <div class="btn-content"><strong>CPU:</strong> AMD Ryzen™ 7 7735HS (8-cores/16-threads, cache 16MB L3, max boost até 4.7 GHz)</div>
-    </div>
-    <div class="setup-btn">
-      <div class="btn-content"><strong>Bateria:</strong> Alta capacidade 90Wh</div>
-    </div>
-    <div class="setup-btn">
-      <div class="btn-content"><strong>Carregamento:</strong> Rápido USB Type-C</div>
-    </div>
-    <div class="setup-btn">
-      <div class="btn-content"><strong>Arrefecimento:</strong> Ventoinhas Arc-Flow de 84 pás e 4 saídas de ar</div>
-    </div>
-    <div class="setup-btn">
-      <div class="btn-content"><strong>Mux Switch:</strong> Com NVIDIA Advanced Optimus</div>
-    </div>
-    <div class="setup-btn">
-      <div class="btn-content"><strong>Ecrã:</strong> 15,6" FHD de 144 Hz</div>
-    </div>
-    <div class="setup-btn">
-      <div class="btn-content"><strong>Resistência:</strong> Nível militar MIL-STD-810H</div>
-    </div>
-    <div class="setup-btn">
-      <div class="btn-content"><strong>Sistema Operativo:</strong> Windows 11 Home</div>
+    <div class="setup-box">
+      <div class="pc-specs">
+        <div class="spec-item"><strong>GPU:</strong> GeForce RTX™ 4050 Laptop</div>
+        <div class="spec-item"><strong>CPU:</strong> AMD Ryzen™ 7 7735HS (8-cores/16-threads, cache 16MB L3, max boost até 4.7 GHz)</div>
+        <div class="spec-item"><strong>Bateria:</strong> Alta capacidade 90Wh</div>
+        <div class="spec-item"><strong>Carregamento:</strong> Rápido USB Type-C</div>
+        <div class="spec-item"><strong>Arrefecimento:</strong> Ventoinhas Arc-Flow de 84 pás e 4 saídas de ar</div>
+        <div class="spec-item"><strong>Mux Switch:</strong> Com NVIDIA Advanced Optimus</div>
+        <div class="spec-item"><strong>Ecrã:</strong> 15,6" FHD de 144 Hz</div>
+        <div class="spec-item"><strong>Resistência:</strong> Nível militar MIL-STD-810H</div>
+        <div class="spec-item"><strong>Sistema Operativo:</strong> Windows 11 Home</div>
+      </div>
     </div>
   </div>
 
