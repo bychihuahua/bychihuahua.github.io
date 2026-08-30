@@ -264,7 +264,7 @@
       font-size: 14px;
     }
 
-    /* Parcerias - grid responsivo */
+    /* Parcerias - grid responsivo com cartões alinhados */
     .parcerias-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -281,7 +281,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
+      gap: 12px;
     }
 
     .parceria-card:hover {
@@ -290,9 +291,16 @@
       transform: translateY(-3px);
     }
 
+    .parceria-logo-container {
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .parceria-card img {
       max-width: 100px;
-      max-height: 50px;
+      max-height: 45px;
       object-fit: contain;
       filter: brightness(0.9);
       transition: all 0.3s ease;
@@ -597,9 +605,13 @@
         padding: 15px 8px;
       }
       
+      .parceria-logo-container {
+        height: 38px;
+      }
+
       .parceria-card img {
         max-width: 80px;
-        max-height: 40px;
+        max-height: 38px;
       }
       
       .codigo-destaque {
@@ -697,7 +709,7 @@
           <img src="https://img.icons8.com/ios_filled/512/FFFFFF/tiktok.png" alt="TikTok">
         </a>
         <a href="https://www.twitch.tv/bychihuahuatv" target="_blank">
-          <img src="https://images.freeimages.com/fic/images/icons/2779/simple_icons/2048/twitch_2048_black.png" alt="Twitch">
+          <img src="https://www.iconpacks.net/icons/2/free-twitch-icon-2178-thumb.png" alt="Twitch">
         </a>
       </div>
     </div>
@@ -749,30 +761,47 @@
       <div class="parcerias-grid">
         <!-- Corsair -->
         <div class="parceria-card">
-          <img src="https://cwsmgmt.corsair.com/press/CORSAIRLogo2020_stack_W.png" alt="Corsair">
+          <div class="parceria-logo-container">
+            <img src="https://cwsmgmt.corsair.com/press/CORSAIRLogo2020_stack_W.png" alt="Corsair">
+          </div>
           <span class="codigo-destaque">Parceiro Oficial</span>
           <a href="https://www.corsair.com" target="_blank">corsair.com</a>
         </div>
         
         <!-- Keydrop com código CHI20 -->
         <div class="parceria-card">
-          <img src="https://img-cdn.hltv.org/eventlogo/lGv1pIMDC0xmLfmLkjh_8s.png?ixlib=java-2.1.0&s=e775ba2e3211591276ed3e2d61861595" alt="Keydrop">
+          <div class="parceria-logo-container">
+            <img src="https://img-cdn.hltv.org/eventlogo/lGv1pIMDC0xmLfmLkjh_8s.png?ixlib=java-2.1.0&s=e775ba2e3211591276ed3e2d61861595" alt="Keydrop">
+          </div>
           <span class="codigo-destaque">Código: CHI20</span>
           <a href="https://kd.link/?code=CHI20" target="_blank">keydrop.gg</a>
         </div>
         
         <!-- Csgo Skins com código CHI10 -->
         <div class="parceria-card">
-          <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/600624a91568c0000152a17a/0x0.png" alt="CSGO Skins">
+          <div class="parceria-logo-container">
+            <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/600624a91568c0000152a17a/0x0.png" alt="CSGO Skins">
+          </div>
           <span class="codigo-destaque">Código: CHI10</span>
-          <a href="https://csgoskins.gg" target="_blank">csgoskins.gg</a>
+          <a href="https://csgo-skins.com" target="_blank">csgo-skins.com</a>
         </div>
         
         <!-- Eneba -->
         <div class="parceria-card">
-          <img src="https://logos-world.net/wp-content/uploads/2022/12/Eneba-Logo.png" alt="Eneba">
+          <div class="parceria-logo-container">
+            <img src="https://logos-world.net/wp-content/uploads/2022/12/Eneba-Logo.png" alt="Eneba">
+          </div>
           <span class="codigo-destaque">Parceiro Oficial</span>
-          <a href="https://www.eneba.com/af_id=ChihuahuaGames&utm_medium=infl&utm_source=ChihuahuaGames" target="_blank">eneba.com</a>
+          <a href="https://www.eneba.com/pt/?af_id=ChihuahuaGames&utm_medium=infl&utm_source=ChihuahuaGames" target="_blank">eneba.com</a>
+        </div>
+
+        <!-- Pirateswap -->
+        <div class="parceria-card">
+          <div class="parceria-logo-container">
+            <img src="https://www.steamanalyst.com/images/Logo_PirateSwap.webp" alt="Pirateswap">
+          </div>
+          <span class="codigo-destaque">Código: CHI</span>
+          <a href="https://pirateswap.com/?ref=chi" target="_blank">pirateswap.com</a>
         </div>
       </div>
     </div>
