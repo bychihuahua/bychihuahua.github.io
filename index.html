@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
   <title>Chihuahua • Media Kit</title>
-  
+
   <!-- Fontes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/outrun-future" rel="stylesheet">
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/outrun-future" rel="stylesheet" />
+
   <!-- Ícones -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <style>
     * {
       margin: 0;
@@ -22,15 +22,15 @@
     }
 
     body {
-      background: #0a0a0a;
+      background: #141413;
       font-family: 'Google Sans', sans-serif;
-      color: #fff;
+      color: #EFD9BC;
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Efeito de scanline (menos intenso no mobile) */
+    /* Scanline effect */
     body::before {
       content: "";
       position: fixed;
@@ -40,8 +40,8 @@
       height: 100%;
       background: repeating-linear-gradient(
         0deg,
-        rgba(0, 0, 0, 0.1) 0px,
-        rgba(0, 0, 0, 0.1) 1px,
+        rgba(0, 0, 0, 0.08) 0px,
+        rgba(0, 0, 0, 0.08) 1px,
         transparent 1px,
         transparent 2px
       );
@@ -49,7 +49,7 @@
       z-index: 999;
     }
 
-    /* Grid de fundo (mais suave no mobile) */
+    /* Grid de fundo */
     body::after {
       content: "";
       position: fixed;
@@ -58,8 +58,8 @@
       width: 100%;
       height: 100%;
       background-image: 
-        linear-gradient(rgba(125, 0, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(125, 0, 255, 0.02) 1px, transparent 1px);
+        linear-gradient(rgba(159, 13, 16, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(159, 13, 16, 0.04) 1px, transparent 1px);
       background-size: 30px 30px;
       pointer-events: none;
       z-index: 998;
@@ -88,7 +88,7 @@
       position: absolute;
       width: 60px;
       height: 2px;
-      background: linear-gradient(90deg, transparent, #5A00B8, #7D00FF, #5A00B8, transparent);
+      background: linear-gradient(90deg, transparent, #9F0D10, #EFD9BC, #9F0D10, transparent);
       top: -10px;
     }
 
@@ -99,8 +99,8 @@
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      border: 3px solid #5A00B8;
-      box-shadow: 0 0 20px rgba(90, 0, 184, 0.5);
+      border: 3px solid #9F0D10;
+      box-shadow: 0 0 20px rgba(159, 13, 16, 0.5);
       margin-bottom: 15px;
       object-fit: cover;
       transition: all 0.3s ease;
@@ -108,14 +108,14 @@
 
     .profile-pic:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(125, 0, 255, 0.8);
+      box-shadow: 0 0 30px rgba(159, 13, 16, 0.8);
     }
 
     h1 {
       font-family: 'Outrun Future', sans-serif;
       font-size: 32px;
-      color: #FFFFFF;
-      text-shadow: 0 0 8px #7D00FF, 0 0 15px #A651FF;
+      color: #EFD9BC;
+      text-shadow: 0 0 8px #9F0D10, 0 0 15px #9F0D10;
       text-align: center;
       margin-bottom: 8px;
       letter-spacing: 2px;
@@ -126,27 +126,26 @@
 
     .subtitle {
       font-size: 16px;
-      color: #ccc;
+      color: #776D5F;
       text-align: center;
       width: 100%;
       margin: 0 auto 20px;
       padding: 12px;
-      border: 1px solid rgba(90, 0, 184, 0.3);
-      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(159, 13, 16, 0.3);
+      background: rgba(20, 20, 19, 0.8);
       backdrop-filter: blur(5px);
       border-radius: 5px;
       position: relative;
-      font-family: 'Google Sans', sans-serif;
     }
 
     .subtitle::before {
       content: "►";
-      color: #5A00B8;
+      color: #9F0D10;
       margin-right: 8px;
       font-size: 16px;
     }
 
-    /* Redes sociais - melhor espaçamento no mobile */
+    /* Socials */
     .socials {
       display: flex;
       gap: 15px;
@@ -158,19 +157,19 @@
     .socials a {
       width: 44px;
       height: 44px;
-      border: 2px solid #5A00B8;
+      border: 2px solid #9F0D10;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(20, 20, 19, 0.5);
     }
 
     .socials a:hover {
-      background: #5A00B8;
+      background: #9F0D10;
       transform: translateY(-3px);
-      box-shadow: 0 0 20px #7D00FF;
+      box-shadow: 0 0 20px #9F0D10;
     }
 
     .socials img {
@@ -181,9 +180,9 @@
 
     /* Cards */
     .card {
-      background: rgba(20, 20, 20, 0.9);
+      background: rgba(20, 20, 19, 0.9);
       backdrop-filter: blur(8px);
-      border: 1px solid rgba(90, 0, 184, 0.3);
+      border: 1px solid rgba(159, 13, 16, 0.25);
       border-radius: 8px;
       padding: 20px 16px;
       margin-bottom: 20px;
@@ -193,8 +192,8 @@
     }
 
     .card:hover {
-      border-color: #7D00FF;
-      box-shadow: 0 0 30px rgba(125, 0, 255, 0.3);
+      border-color: #9F0D10;
+      box-shadow: 0 0 30px rgba(159, 13, 16, 0.25);
       transform: translateY(-3px);
     }
 
@@ -205,13 +204,13 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: linear-gradient(90deg, transparent, #5A00B8, #A651FF, #5A00B8, transparent);
+      background: linear-gradient(90deg, transparent, #9F0D10, #EFD9BC, #9F0D10, transparent);
     }
 
     .card-title {
       font-family: 'Outrun Future', sans-serif;
       font-size: 20px;
-      color: #fff;
+      color: #EFD9BC;
       margin-bottom: 16px;
       display: flex;
       align-items: center;
@@ -220,20 +219,20 @@
     }
 
     .card-title i {
-      color: #5A00B8;
+      color: #9F0D10;
       font-size: 24px;
     }
 
     .card-title span {
-      background: rgba(90, 0, 184, 0.2);
+      background: rgba(159, 13, 16, 0.2);
       padding: 4px 12px;
       border-radius: 20px;
       font-size: 12px;
       font-family: 'Google Sans', sans-serif;
-      color: #A651FF;
+      color: #EFD9BC;
     }
 
-    /* Nichos - grid responsivo */
+    /* Nichos */
     .nichos-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -242,29 +241,57 @@
 
     .nicho-item {
       background: rgba(0, 0, 0, 0.3);
-      border: 1px solid #333;
+      border: 1px solid #373737;
       border-radius: 5px;
       padding: 12px 8px;
       text-align: center;
       font-size: 15px;
       transition: all 0.3s ease;
-      font-family: 'Google Sans', sans-serif;
-      word-break: break-word;
+      color: #EFD9BC;
     }
 
     .nicho-item:hover {
-      border-color: #5A00B8;
-      background: rgba(90, 0, 184, 0.1);
+      border-color: #9F0D10;
+      background: rgba(159, 13, 16, 0.1);
       transform: scale(1.02);
     }
 
     .nicho-item i {
-      color: #A651FF;
+      color: #9F0D10;
       margin-right: 6px;
       font-size: 14px;
     }
 
-    /* Parcerias - grid responsivo com cartões alinhados */
+    /* Diferenciais */
+    .diferenciais-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 500px) {
+      .diferenciais-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .diferencial-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid #373737;
+      border-radius: 12px;
+      color: #EFD9BC;
+    }
+
+    .diferencial-item i {
+      font-size: 24px;
+      color: #9F0D10;
+    }
+
+    /* Parcerias */
     .parcerias-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -273,7 +300,7 @@
 
     .parceria-card {
       background: rgba(0, 0, 0, 0.3);
-      border: 1px solid #333;
+      border: 1px solid #373737;
       border-radius: 15px;
       padding: 20px 12px;
       text-align: center;
@@ -286,8 +313,8 @@
     }
 
     .parceria-card:hover {
-      border-color: #5A00B8;
-      box-shadow: 0 0 20px rgba(90, 0, 184, 0.3);
+      border-color: #9F0D10;
+      box-shadow: 0 0 20px rgba(159, 13, 16, 0.25);
       transform: translateY(-3px);
     }
 
@@ -311,38 +338,130 @@
       filter: brightness(1);
     }
 
+    .codigo-destaque {
+      color: #9F0D10;
+      font-weight: bold;
+      font-size: 13px;
+      background: rgba(159, 13, 16, 0.15);
+      padding: 4px 8px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
     .parceria-card a {
-      color: #fff;
+      color: #EFD9BC;
       text-decoration: none;
       display: inline-block;
       font-size: 12px;
-      background: #5A00B8;
+      background: #9F0D10;
       padding: 8px 16px;
       border-radius: 20px;
       transition: all 0.3s ease;
       font-weight: bold;
       width: fit-content;
-      font-family: 'Google Sans', sans-serif;
     }
 
     .parceria-card a:hover {
-      background: #7D00FF;
+      background: #EFD9BC;
+      color: #141413;
       transform: scale(1.03);
-      box-shadow: 0 0 15px #7D00FF;
+      box-shadow: 0 0 15px #9F0D10;
     }
 
-    .codigo-destaque {
-      color: #A651FF;
-      font-weight: bold;
-      font-size: 13px;
-      background: rgba(90, 0, 184, 0.2);
-      padding: 4px 8px;
-      border-radius: 12px;
+    /* ===== DESTAQUE PIRATESWAP ===== */
+    .parceria-card.destaque {
+      border: 2px solid #EFD9BC;
+      background: rgba(159, 13, 16, 0.15);
+      position: relative;
+      overflow: hidden;
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+
+    .parceria-card.destaque::before {
+      content: "✦ NOVA ✦";
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #9F0D10;
+      color: #EFD9BC;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      animation: blinkBadge 1.5s ease-in-out infinite;
+    }
+
+    .parceria-card.destaque::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 16px;
+      padding: 2px;
+      background: linear-gradient(45deg, #9F0D10, #EFD9BC, #9F0D10, #EFD9BC);
+      background-size: 300% 300%;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: borderGlow 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .parceria-card.destaque:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 0 40px rgba(159, 13, 16, 0.6), 0 0 80px rgba(159, 13, 16, 0.3);
+    }
+
+    .parceria-card.destaque .codigo-destaque {
+      background: rgba(239, 217, 188, 0.2);
+      color: #EFD9BC;
+      font-size: 14px;
+      padding: 6px 14px;
+    }
+
+    .parceria-card.destaque a {
+      background: #EFD9BC;
+      color: #141413;
+      font-weight: 700;
+    }
+
+    .parceria-card.destaque a:hover {
+      background: #9F0D10;
+      color: #EFD9BC;
+      box-shadow: 0 0 25px #9F0D10;
+    }
+
+    /* Badge "NOVO" animado */
+    .nova-badge {
       display: inline-block;
-      font-family: 'Google Sans', sans-serif;
+      background: #9F0D10;
+      color: #EFD9BC;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      animation: blinkBadge 1.5s ease-in-out infinite;
     }
 
-    /* Pacotes - grid responsivo */
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 15px rgba(159, 13, 16, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(159, 13, 16, 0.6), 0 0 60px rgba(159, 13, 16, 0.2); }
+    }
+
+    @keyframes borderGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes blinkBadge {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* Pacotes */
     .pacotes-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -362,8 +481,8 @@
     }
 
     .pacote-card {
-      background: linear-gradient(135deg, #1a1a1a, #111);
-      border: 1px solid #5A00B8;
+      background: linear-gradient(135deg, #1a1a19, #141413);
+      border: 1px solid #9F0D10;
       border-radius: 15px;
       padding: 25px 15px;
       text-align: center;
@@ -374,38 +493,36 @@
 
     .pacote-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(90, 0, 184, 0.4);
+      box-shadow: 0 15px 30px rgba(159, 13, 16, 0.3);
     }
 
     .pacote-valor {
       font-family: 'Outrun Future', sans-serif;
       font-size: 32px;
       font-weight: 700;
-      color: #A651FF;
+      color: #9F0D10;
       margin: 15px 0;
-      text-shadow: 0 0 8px #7D00FF;
+      text-shadow: 0 0 8px #9F0D10;
       word-break: break-word;
     }
 
     .pacote-desc {
-      color: #ccc;
+      color: #776D5F;
       margin: 12px 0;
       font-size: 14px;
       line-height: 1.6;
-      font-family: 'Google Sans', sans-serif;
     }
 
     .pacote-btn {
       display: inline-block;
       background: transparent;
-      border: 2px solid #5A00B8;
-      color: #fff;
+      border: 2px solid #9F0D10;
+      color: #EFD9BC;
       padding: 10px 25px;
       text-decoration: none;
       border-radius: 25px;
       transition: all 0.3s ease;
       font-weight: bold;
-      font-family: 'Google Sans', sans-serif;
       cursor: pointer;
       font-size: 14px;
       width: 100%;
@@ -414,41 +531,12 @@
     }
 
     .pacote-btn:hover {
-      background: #5A00B8;
-      box-shadow: 0 0 20px #7D00FF;
+      background: #9F0D10;
+      box-shadow: 0 0 20px #9F0D10;
+      color: #EFD9BC;
     }
 
-    /* Diferenciais */
-    .diferenciais-list {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    @media (min-width: 500px) {
-      .diferenciais-list {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .diferencial-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px;
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid #333;
-      border-radius: 12px;
-      font-family: 'Google Sans', sans-serif;
-      font-size: 14px;
-    }
-
-    .diferencial-item i {
-      font-size: 24px;
-      color: #5A00B8;
-    }
-
-    /* Setup items */
+    /* Setup */
     .setup-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -457,40 +545,38 @@
 
     .setup-item {
       background: rgba(0, 0, 0, 0.3);
-      border: 1px solid #333;
+      border: 1px solid #373737;
       border-radius: 12px;
       padding: 12px 8px;
       text-align: center;
       transition: all 0.3s ease;
       text-decoration: none;
-      color: #fff;
+      color: #EFD9BC;
       display: block;
-      font-family: 'Google Sans', sans-serif;
       font-size: 13px;
       word-break: break-word;
     }
 
     .setup-item:hover {
-      border-color: #5A00B8;
-      background: rgba(90, 0, 184, 0.1);
+      border-color: #9F0D10;
+      background: rgba(159, 13, 16, 0.1);
       transform: scale(1.02);
     }
 
     .setup-item i {
-      color: #A651FF;
+      color: #9F0D10;
       margin-right: 6px;
       font-size: 14px;
     }
 
     .patrocinio-badge {
       font-size: 10px;
-      color: #5A00B8;
+      color: #9F0D10;
       margin-top: 4px;
       opacity: 0.8;
-      font-family: 'Google Sans', sans-serif;
     }
 
-    /* Radar effect - escondido no mobile para não atrapalhar */
+    /* Radar effect */
     .radar {
       display: none;
     }
@@ -503,7 +589,7 @@
         right: 20px;
         width: 80px;
         height: 80px;
-        border: 2px solid rgba(90, 0, 184, 0.3);
+        border: 2px solid rgba(159, 13, 16, 0.3);
         border-radius: 50%;
         animation: radarSpin 4s linear infinite;
         z-index: 999;
@@ -515,20 +601,19 @@
       to { transform: rotate(360deg); }
     }
 
-    /* Email e botão */
+    /* Contact */
     .contact-info {
       margin: 15px 0;
       font-size: 16px;
-      color: #A651FF;
-      font-family: 'Google Sans', sans-serif;
+      color: #9F0D10;
       letter-spacing: 0.5px;
       word-break: break-all;
     }
 
     .propostas-btn {
       display: inline-block;
-      background: #5A00B8;
-      color: #fff;
+      background: #9F0D10;
+      color: #EFD9BC;
       padding: 14px 30px;
       text-decoration: none;
       border-radius: 30px;
@@ -536,7 +621,6 @@
       font-size: 16px;
       transition: all 0.3s ease;
       border: 2px solid transparent;
-      font-family: 'Google Sans', sans-serif;
       width: 100%;
       max-width: 280px;
       margin: 0 auto;
@@ -544,139 +628,56 @@
 
     .propostas-btn:hover {
       background: transparent;
-      border-color: #5A00B8;
-      box-shadow: 0 0 20px #7D00FF;
+      border-color: #9F0D10;
+      box-shadow: 0 0 20px #9F0D10;
       transform: scale(1.02);
     }
 
-    /* Footer */
     .footer {
       text-align: center;
       margin-top: 40px;
       padding: 20px 10px;
-      border-top: 1px solid #333;
-      color: #666;
-      font-family: 'Google Sans', sans-serif;
+      border-top: 1px solid #373737;
+      color: #776D5F;
       font-size: 12px;
     }
 
-    /* Ajustes de toque no mobile */
+    /* Mobile adjustments */
     @media (max-width: 480px) {
-      .container {
-        padding: 15px 12px;
-      }
-      
-      .card {
-        padding: 16px 12px;
-        margin-bottom: 16px;
-      }
-      
-      .card-title {
-        font-size: 18px;
-      }
-      
-      .card-title i {
-        font-size: 20px;
-      }
-      
-      .nicho-item {
-        padding: 10px 6px;
-        font-size: 14px;
-      }
-      
-      .pacote-card {
-        padding: 20px 12px;
-      }
-      
-      .pacote-valor {
-        font-size: 28px;
-      }
-      
-      .pacote-desc {
-        font-size: 13px;
-      }
-      
-      .pacote-btn {
-        padding: 8px 20px;
-        font-size: 13px;
-      }
-      
-      .parceria-card {
-        padding: 15px 8px;
-      }
-      
-      .parceria-logo-container {
-        height: 38px;
-      }
-
-      .parceria-card img {
-        max-width: 80px;
-        max-height: 38px;
-      }
-      
-      .codigo-destaque {
-        font-size: 11px;
-        padding: 3px 6px;
-      }
-      
-      .parceria-card a {
-        font-size: 11px;
-        padding: 6px 12px;
-      }
-      
-      .diferencial-item {
-        padding: 10px;
-        font-size: 13px;
-      }
-      
-      .diferencial-item i {
-        font-size: 20px;
-      }
-      
-      .setup-item {
-        padding: 10px 6px;
-        font-size: 12px;
-      }
-      
-      .propostas-btn {
-        padding: 12px 20px;
-        font-size: 15px;
-        max-width: 240px;
+      .container { padding: 15px 12px; }
+      .card { padding: 16px 12px; margin-bottom: 16px; }
+      .card-title { font-size: 18px; }
+      .card-title i { font-size: 20px; }
+      .nicho-item { padding: 10px 6px; font-size: 14px; }
+      .pacote-card { padding: 20px 12px; }
+      .pacote-valor { font-size: 28px; }
+      .pacote-desc { font-size: 13px; }
+      .pacote-btn { padding: 8px 20px; font-size: 13px; }
+      .parceria-card { padding: 15px 8px; }
+      .parceria-logo-container { height: 38px; }
+      .parceria-card img { max-width: 80px; max-height: 38px; }
+      .codigo-destaque { font-size: 11px; padding: 3px 6px; }
+      .parceria-card a { font-size: 11px; padding: 6px 12px; }
+      .diferencial-item { padding: 10px; font-size: 13px; }
+      .diferencial-item i { font-size: 20px; }
+      .setup-item { padding: 10px 6px; font-size: 12px; }
+      .propostas-btn { padding: 12px 20px; font-size: 15px; max-width: 240px; }
+      .parceria-card.destaque::before {
+        font-size: 8px;
+        padding: 2px 10px;
+        top: 4px;
+        right: 4px;
       }
     }
 
-    /* Ajustes para telas muito pequenas */
     @media (max-width: 360px) {
-      h1 {
-        font-size: 28px;
-      }
-      
-      .subtitle {
-        font-size: 14px;
-        padding: 10px;
-      }
-      
-      .socials {
-        gap: 10px;
-      }
-      
-      .socials a {
-        width: 40px;
-        height: 40px;
-      }
-      
-      .socials img {
-        width: 20px;
-        height: 20px;
-      }
-      
-      .nichos-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .parcerias-grid {
-        grid-template-columns: 1fr;
-      }
+      h1 { font-size: 28px; }
+      .subtitle { font-size: 14px; padding: 10px; }
+      .socials { gap: 10px; }
+      .socials a { width: 40px; height: 40px; }
+      .socials img { width: 20px; height: 20px; }
+      .nichos-grid { grid-template-columns: repeat(2, 1fr); }
+      .parcerias-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -684,41 +685,25 @@
 
   <audio id="clickSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_3e5a4c1a21.mp3" preload="auto"></audio>
 
-  <!-- Efeito radar (aparece apenas no desktop) -->
   <div class="radar"></div>
 
   <div class="container">
-    <!-- Header HUD -->
+    <!-- Header -->
     <div class="hud-header">
-      <img src="https://yt3.googleusercontent.com/3YsjXpPkonFrxkW-dlBIkJ3iG5JYGBJjU17d93mUSu5j-woJGCcLi6lixoJ0MZCWQ6-GifaXxw=s160-c-k-c0x00ffffff-no-rj" alt="Chihuahua" class="profile-pic">
+      <img src="https://yt3.ggpht.com/1MX4E9wj8COtp3gajmlT0-HgDH0eHmRMb1ZHo9tFooDeQLSFQrOeJV8ty_2CECL8Ddk3ukKI=s176-c-k-c0x00ffffff-no-rj" alt="Chihuahua" class="profile-pic" />
       <h1>CHIHUAHUA</h1>
-      
-      <div class="subtitle">
-        Criadora de conteúdo • CS2 • Tecnologia
-      </div>
-
-      <!-- Redes Sociais -->
+      <div class="subtitle">Criadora de conteúdo • CS2 • Tecnologia</div>
       <div class="socials">
-        <a href="https://www.youtube.com/@bychihuahua" target="_blank">
-          <img src="https://www.iconpacks.net/icons/1/free-youtube-icon-123-thumb.png" alt="YouTube">
-        </a>
-        <a href="https://www.instagram.com/bychihuahua" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/717/717392.png" alt="Instagram">
-        </a>
-        <a href="https://www.tiktok.com/@bychihuahua" target="_blank">
-          <img src="https://img.icons8.com/ios_filled/512/FFFFFF/tiktok.png" alt="TikTok">
-        </a>
-        <a href="https://www.twitch.tv/bychihuahuatv" target="_blank">
-          <img src="https://www.iconpacks.net/icons/2/free-twitch-icon-2178-thumb.png" alt="Twitch">
-        </a>
+        <a href="https://www.youtube.com/@bychihuahua" target="_blank"><img src="https://www.iconpacks.net/icons/1/free-youtube-icon-123-thumb.png" alt="YouTube" /></a>
+        <a href="https://www.instagram.com/bychihuahua" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/717/717392.png" alt="Instagram" /></a>
+        <a href="https://www.tiktok.com/@bychihuahua" target="_blank"><img src="https://img.icons8.com/ios_filled/512/FFFFFF/tiktok.png" alt="TikTok" /></a>
+        <a href="https://www.twitch.tv/bychihuahuatv" target="_blank"><img src="https://www.iconpacks.net/icons/2/free-twitch-icon-2178-thumb.png" alt="Twitch" /></a>
       </div>
     </div>
 
     <!-- Nichos -->
     <div class="card">
-      <div class="card-title">
-        <i class="fas fa-crosshairs"></i> NICHOS ABORDADOS <span>FOCUS</span>
-      </div>
+      <div class="card-title"><i class="fas fa-crosshairs"></i> NICHOS ABORDADOS <span>FOCUS</span></div>
       <div class="nichos-grid">
         <div class="nicho-item"><i class="fas fa-skull"></i> CS2</div>
         <div class="nicho-item"><i class="fas fa-keyboard"></i> Periféricos</div>
@@ -730,181 +715,97 @@
 
     <!-- Diferenciais -->
     <div class="card">
-      <div class="card-title">
-        <i class="fas fa-trophy"></i> DIFERENCIAIS <span>SKILLS</span>
-      </div>
+      <div class="card-title"><i class="fas fa-trophy"></i> DIFERENCIAIS <span>SKILLS</span></div>
       <div class="diferenciais-list">
-        <div class="diferencial-item">
-          <i class="fas fa-check-circle"></i>
-          <div>Conteúdo útil e aprofundado sobre CS2</div>
-        </div>
-        <div class="diferencial-item">
-          <i class="fas fa-bolt"></i>
-          <div>Análises técnicas de hardware</div>
-        </div>
-        <div class="diferencial-item">
-          <i class="fas fa-users"></i>
-          <div>Comunidade engajada e ativa</div>
-        </div>
-        <div class="diferencial-item">
-          <i class="fas fa-star"></i>
-          <div>+7 anos de experiência</div>
-        </div>
+        <div class="diferencial-item"><i class="fas fa-check-circle"></i> Conteúdo útil e aprofundado sobre CS2</div>
+        <div class="diferencial-item"><i class="fas fa-bolt"></i> Análises técnicas de hardware</div>
+        <div class="diferencial-item"><i class="fas fa-users"></i> Comunidade engajada e ativa</div>
+        <div class="diferencial-item"><i class="fas fa-star"></i> +7 anos de experiência</div>
       </div>
     </div>
 
-    <!-- Parcerias Atuais -->
+    <!-- Parcerias -->
     <div class="card">
-      <div class="card-title">
-        <i class="fas fa-handshake"></i> PARCERIAS ATUAIS <span>TEAM</span>
-      </div>
+      <div class="card-title"><i class="fas fa-handshake"></i> PARCERIAS ATUAIS <span>TEAM</span></div>
       <div class="parcerias-grid">
         <!-- Corsair -->
         <div class="parceria-card">
-          <div class="parceria-logo-container">
-            <img src="https://cwsmgmt.corsair.com/press/CORSAIRLogo2020_stack_W.png" alt="Corsair">
-          </div>
+          <div class="parceria-logo-container"><img src="https://cwsmgmt.corsair.com/press/CORSAIRLogo2020_stack_W.png" alt="Corsair" /></div>
           <span class="codigo-destaque">Parceiro Oficial</span>
           <a href="https://www.corsair.com" target="_blank">corsair.com</a>
         </div>
         
-        <!-- Keydrop com código CHI20 -->
+        <!-- Keydrop -->
         <div class="parceria-card">
-          <div class="parceria-logo-container">
-            <img src="https://img-cdn.hltv.org/eventlogo/lGv1pIMDC0xmLfmLkjh_8s.png?ixlib=java-2.1.0&s=e775ba2e3211591276ed3e2d61861595" alt="Keydrop">
-          </div>
+          <div class="parceria-logo-container"><img src="https://img-cdn.hltv.org/eventlogo/lGv1pIMDC0xmLfmLkjh_8s.png?ixlib=java-2.1.0&s=e775ba2e3211591276ed3e2d61861595" alt="Keydrop" /></div>
           <span class="codigo-destaque">Código: CHI20</span>
           <a href="https://kd.link/?code=CHI20" target="_blank">keydrop.gg</a>
         </div>
         
-        <!-- Csgo Skins com código CHI10 -->
-        <div class="parceria-card">
-          <div class="parceria-logo-container">
-            <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/600624a91568c0000152a17a/0x0.png" alt="CSGO Skins">
-          </div>
-          <span class="codigo-destaque">Código: CHI10</span>
-          <a href="https://csgo-skins.com" target="_blank">csgo-skins.com</a>
-        </div>
-        
         <!-- Eneba -->
         <div class="parceria-card">
-          <div class="parceria-logo-container">
-            <img src="https://logos-world.net/wp-content/uploads/2022/12/Eneba-Logo.png" alt="Eneba">
-          </div>
+          <div class="parceria-logo-container"><img src="https://logos-world.net/wp-content/uploads/2022/12/Eneba-Logo.png" alt="Eneba" /></div>
           <span class="codigo-destaque">Parceiro Oficial</span>
           <a href="https://www.eneba.com/pt/?af_id=ChihuahuaGames&utm_medium=infl&utm_source=ChihuahuaGames" target="_blank">eneba.com</a>
         </div>
 
-        <!-- Pirateswap -->
-        <div class="parceria-card">
-          <div class="parceria-logo-container">
-            <img src="https://www.steamanalyst.com/images/Logo_PirateSwap.webp" alt="Pirateswap">
-          </div>
-          <span class="codigo-destaque">Código: CHI</span>
+        <!-- Pirateswap - DESTAQUE -->
+        <div class="parceria-card destaque">
+          <div class="parceria-logo-container"><img src="https://www.steamanalyst.com/images/Logo_PirateSwap.webp" alt="Pirateswap" /></div>
+          <span class="codigo-destaque">⚓ Código: CHI</span>
           <a href="https://pirateswap.com/?ref=chi" target="_blank">pirateswap.com</a>
         </div>
       </div>
     </div>
 
-    <!-- PACOTES -->
+    <!-- Pacotes -->
     <div class="card">
-      <div class="card-title">
-        <i class="fas fa-shopping-bag"></i> PACOTES ESPECIAIS <span>PREÇOS</span>
-      </div>
+      <div class="card-title"><i class="fas fa-shopping-bag"></i> PACOTES ESPECIAIS <span>PREÇOS</span></div>
       <div class="pacotes-grid">
-        <!-- Pacote 1 - 150€ -->
         <div class="pacote-card">
-          <i class="fas fa-crown" style="font-size: 32px; color: #5A00B8;"></i>
+          <i class="fas fa-crown" style="font-size: 32px; color: #9F0D10;"></i>
           <div class="pacote-valor">150€</div>
-          <div class="pacote-desc">
-            • 1 vídeo short (TikTok e YouTube)<br>
-            • Menção num vídeo longo do YouTube<br>
-            • 1 story
-          </div>
+          <div class="pacote-desc">• 1 vídeo short (TikTok e YouTube)<br />• Menção num vídeo longo do YouTube<br />• 1 story</div>
           <a href="mailto:constancaviriato@gmail.com?subject=Interesse%20no%20Pacote%20150%E2%82%AC&body=Ol%C3%A1%20Chihuahua%2C%0A%0ATenho%20interesse%20no%20pacote%20de%20150%E2%82%AC.%0A%0A%3E%201%20v%C3%ADdeo%20short%20(TikTok%20e%20YouTube)%0A%3E%20Men%C3%A7%C3%A3o%20num%20v%C3%ADdeo%20longo%20do%20YouTube%0A%3E%201%20story%0A%0APoder%C3%A1%20enviar%20mais%20informa%C3%A7%C3%B5es%3F%0A%0AObrigado%2C" class="pacote-btn">QUERO ESTE</a>
         </div>
-
-        <!-- Pacote 2 - 300€ -->
         <div class="pacote-card">
-          <i class="fas fa-dragon" style="font-size: 32px; color: #7D00FF;"></i>
+          <i class="fas fa-dragon" style="font-size: 32px; color: #9F0D10;"></i>
           <div class="pacote-valor">300€</div>
-          <div class="pacote-desc">
-            • 1 story semanal<br>
-            • 1 menção semanal<br>
-            • 1 vídeo longo mensal
-          </div>
+          <div class="pacote-desc">• 1 story semanal<br />• 1 menção semanal<br />• 1 vídeo longo mensal</div>
           <a href="mailto:constancaviriato@gmail.com?subject=Interesse%20no%20Pacote%20300%E2%82%AC&body=Ol%C3%A1%20Chihuahua%2C%0A%0ATenho%20interesse%20no%20pacote%20de%20300%E2%82%AC.%0A%0A%3E%201%20story%20semanal%0A%3E%201%20men%C3%A7%C3%A3o%20semanal%0A%3E%201%20v%C3%ADdeo%20longo%20mensal%0A%0APoder%C3%A1%20enviar%20mais%20informa%C3%A7%C3%B5es%3F%0A%0AObrigado%2C" class="pacote-btn">QUERO ESTE</a>
         </div>
-
-        <!-- Pacote 3 Sob Consulta -->
         <div class="pacote-card">
-          <i class="fas fa-ghost" style="font-size: 32px; color: #fff;"></i>
+          <i class="fas fa-ghost" style="font-size: 32px; color: #776D5F;"></i>
           <div class="pacote-valor">SOB CONSULTA</div>
-          <div class="pacote-desc">
-            • Pacote personalizado<br>
-            • Campanha completa<br>
-            • Ativações especiais<br>
-            • Conteúdo exclusivo
-          </div>
+          <div class="pacote-desc">• Pacote personalizado<br />• Campanha completa<br />• Ativações especiais<br />• Conteúdo exclusivo</div>
           <a href="mailto:constancaviriato@gmail.com?subject=Interesse%20em%20Pacote%20Personalizado&body=Ol%C3%A1%20Chihuahua%2C%0A%0AGostaria%20de%20saber%20mais%20sobre%20um%20pacote%20personalizado%20para%20colabora%C3%A7%C3%A3o.%0A%0APodemos%20conversar%3F%0A%0AObrigado%2C" class="pacote-btn">CONTACTAR</a>
         </div>
       </div>
     </div>
 
-    <!-- Setup com links atualizados -->
+    <!-- Setup -->
     <div class="card">
-      <div class="card-title">
-        <i class="fas fa-computer"></i> SETUP <span>GEAR • PATROCÍNIO CORSAIR</span>
-      </div>
+      <div class="card-title"><i class="fas fa-computer"></i> SETUP <span>GEAR • PATROCÍNIO CORSAIR</span></div>
       <div class="setup-grid">
-        <a href="https://tidd.ly/4kE5zly" target="_blank" class="setup-item">
-          <i class="fas fa-mouse"></i> M75 Air Corsair
-          <div class="patrocinio-badge">Parceiro Corsair</div>
-        </a>
-        <div class="setup-item" style="cursor: default;">
-          <i class="fas fa-mouse"></i> Logitech MX Master 2
-          <div class="patrocinio-badge">Setup pessoal</div>
-        </div>
-        <a href="https://tidd.ly/43ZsgJc" target="_blank" class="setup-item">
-          <i class="fas fa-keyboard"></i> K65 RGB Mini Corsair
-          <div class="patrocinio-badge">Parceiro Corsair</div>
-        </a>
-        <a href="https://tidd.ly/4mZWAfh" target="_blank" class="setup-item">
-          <i class="fas fa-headphones"></i> VOID WIRELESS v2
-          <div class="patrocinio-badge">Parceiro Corsair</div>
-        </a>
-        <div class="setup-item" style="cursor: default;">
-          <i class="fas fa-tv"></i> HP X24ih
-          <div class="patrocinio-badge">Setup pessoal</div>
-        </div>
-        <a href="https://gamerunlocked.pt/produto/x-raypad-equate-plus-v2-kiwami/?srsltid=AfmBOorCmdo_9dPW7GbC4SVgQbRzBluV5dzloxQC8HQ4097ISxWa1qUY" target="_blank" class="setup-item">
-          <i class="fas fa-mousepad"></i> X-raypad Equate Plus v2 Kiwami
-          <div class="patrocinio-badge">Setup pessoal</div>
-        </a>
+        <a href="https://tidd.ly/4kE5zly" target="_blank" class="setup-item"><i class="fas fa-mouse"></i> M75 Air Corsair <div class="patrocinio-badge">Parceiro Corsair</div></a>
+        <div class="setup-item" style="cursor: default;"><i class="fas fa-mouse"></i> Logitech MX Master 2 <div class="patrocinio-badge">Setup pessoal</div></div>
+        <a href="https://tidd.ly/43ZsgJc" target="_blank" class="setup-item"><i class="fas fa-keyboard"></i> K65 RGB Mini Corsair <div class="patrocinio-badge">Parceiro Corsair</div></a>
+        <a href="https://tidd.ly/4mZWAfh" target="_blank" class="setup-item"><i class="fas fa-headphones"></i> VOID WIRELESS v2 <div class="patrocinio-badge">Parceiro Corsair</div></a>
+        <div class="setup-item" style="cursor: default;"><i class="fas fa-tv"></i> HP X24ih <div class="patrocinio-badge">Setup pessoal</div></div>
+        <a href="https://gamerunlocked.pt/produto/x-raypad-equate-plus-v2-kiwami/?srsltid=AfmBOorCmdo_9dPW7GbC4SVgQbRzBluV5dzloxQC8HQ4097ISxWa1qUY" target="_blank" class="setup-item"><i class="fas fa-mousepad"></i> X-raypad Equate Plus v2 Kiwami <div class="patrocinio-badge">Setup pessoal</div></a>
       </div>
     </div>
 
-    <!-- Contato -->
+    <!-- Contact -->
     <div class="card" style="text-align: center;">
-      <div class="card-title" style="justify-content: center;">
-        <i class="fas fa-envelope"></i> CONTACTO
-      </div>
-      <div class="contact-info">
-        constancaviriato@gmail.com
-      </div>
-      <a href="mailto:constancaviriato@gmail.com?subject=Proposta%20de%20Colabora%C3%A7%C3%A3o&body=Ol%C3%A1%20Chihuahua%2C%0A%0AVenho%20por%20este%20meio%20apresentar%20uma%20proposta%20de%20colabora%C3%A7%C3%A3o.%0A%0A%F0%9F%93%8A%20Detalhes%20da%20proposta%3A%0A%0A%0AAgrade%C3%A7o%20desde%20j%C3%A1%20a%20aten%C3%A7%C3%A3o%20e%20aguardo%20feedback.%0A%0AMelhores%20cumprimentos%2C" class="propostas-btn">
-        PROPOSTAS <i class="fas fa-paper-plane"></i>
-      </a>
+      <div class="card-title" style="justify-content: center;"><i class="fas fa-envelope"></i> CONTACTO</div>
+      <div class="contact-info">constancaviriato@gmail.com</div>
+      <a href="mailto:constancaviriato@gmail.com?subject=Proposta%20de%20Colabora%C3%A7%C3%A3o&body=Ol%C3%A1%20Chihuahua%2C%0A%0AVenho%20por%20este%20meio%20apresentar%20uma%20proposta%20de%20colabora%C3%A7%C3%A3o.%0A%0A%F0%9F%93%8A%20Detalhes%20da%20proposta%3A%0A%0A%0AAgrade%C3%A7o%20desde%20j%C3%A1%20a%20aten%C3%A7%C3%A3o%20e%20aguardo%20feedback.%0A%0AMelhores%20cumprimentos%2C" class="propostas-btn">PROPOSTAS <i class="fas fa-paper-plane"></i></a>
     </div>
 
-    <!-- Footer -->
-    <div class="footer">
-      © 2026 Chihuahua • Media Kit • Todos os direitos reservados
-    </div>
-
+    <div class="footer">© 2026 Chihuahua • Media Kit • Todos os direitos reservados</div>
   </div>
 
-  <!-- Efeito sonoro -->
   <script>
     const clickSound = document.getElementById("clickSound");
     document.querySelectorAll("a").forEach(link => {
@@ -915,7 +816,6 @@
     });
   </script>
 
-  <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7634353064287764" crossorigin="anonymous"></script>
 
 </body>
