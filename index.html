@@ -2,35 +2,49 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-  <title>Chihuahua • Media Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Chihuahua • Hub Oficial</title>
 
   <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.cdnfonts.com/css/outrun-future" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Ícones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
+    :root {
+      --bg-color: #0b0c0e;
+      --card-bg: rgba(18, 20, 24, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #9f0d10;
+      --accent-glow: rgba(159, 13, 16, 0.25);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --radius: 12px;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
     body {
-      background: #141413;
-      font-family: 'Google Sans', sans-serif;
-      color: #EFD9BC;
+      background-color: var(--bg-color);
+      color: var(--text-main);
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
     }
 
-    /* Canvas do Three.js em segundo plano */
+    /* Fundo Subtle e Elevado */
     #three-bg {
       position: fixed;
       top: 0;
@@ -39,918 +53,426 @@
       height: 100vh;
       z-index: 1;
       pointer-events: none;
-    }
-
-    /* Scanline effect */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: repeating-linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0.08) 0px,
-        rgba(0, 0, 0, 0.08) 1px,
-        transparent 1px,
-        transparent 2px
-      );
-      pointer-events: none;
-      z-index: 999;
-    }
-
-    /* Grid de fundo */
-    body::after {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        linear-gradient(rgba(159, 13, 16, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(159, 13, 16, 0.04) 1px, transparent 1px);
-      background-size: 30px 30px;
-      pointer-events: none;
-      z-index: 998;
+      opacity: 0.6;
     }
 
     .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px 16px;
+      width: 100%;
+      max-width: 800px;
       position: relative;
       z-index: 2;
-    }
-
-    /* Header HUD */
-    .hud-header {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      margin-bottom: 30px;
-      position: relative;
-    }
-
-    .hud-header::before,
-    .hud-header::after {
-      content: "";
-      position: absolute;
-      width: 60px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #9F0D10, #EFD9BC, #9F0D10, transparent);
-      top: -10px;
-    }
-
-    .hud-header::before { left: 0; }
-    .hud-header::after { right: 0; }
-
-    .profile-pic {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 3px solid #9F0D10;
-      box-shadow: 0 0 20px rgba(159, 13, 16, 0.5);
-      margin-bottom: 15px;
-      object-fit: cover;
-      transition: all 0.3s ease;
-    }
-
-    .profile-pic:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(159, 13, 16, 0.8);
-    }
-
-    h1 {
-      font-family: 'Outrun Future', sans-serif;
-      font-size: 32px;
-      color: #EFD9BC;
-      text-shadow: 0 0 8px #9F0D10, 0 0 15px #9F0D10;
-      text-align: center;
-      margin-bottom: 8px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      line-height: 1.2;
-      word-break: break-word;
-    }
-
-    .subtitle {
-      font-size: 16px;
-      color: #776D5F;
-      text-align: center;
-      width: 100%;
-      margin: 0 auto 20px;
-      padding: 12px;
-      border: 1px solid rgba(159, 13, 16, 0.3);
-      background: rgba(20, 20, 19, 0.8);
-      backdrop-filter: blur(5px);
-      border-radius: 5px;
-      position: relative;
-    }
-
-    .subtitle::before {
-      content: "►";
-      color: #9F0D10;
-      margin-right: 8px;
-      font-size: 16px;
-    }
-
-    /* Socials */
-    .socials {
-      display: flex;
-      gap: 15px;
-      margin: 15px 0;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .socials a {
-      width: 44px;
-      height: 44px;
-      border: 2px solid #9F0D10;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      background: rgba(20, 20, 19, 0.5);
-    }
-
-    .socials a:hover {
-      background: #9F0D10;
-      transform: translateY(-3px);
-      box-shadow: 0 0 20px #9F0D10;
-    }
-
-    .socials img {
-      width: 22px;
-      height: 22px;
-      filter: brightness(0) invert(1);
-    }
-
-    /* Cards */
-    .card {
-      background: rgba(20, 20, 19, 0.85);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(159, 13, 16, 0.25);
-      border-radius: 8px;
-      padding: 20px 16px;
-      margin-bottom: 20px;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .card:hover {
-      border-color: #9F0D10;
-      box-shadow: 0 0 30px rgba(159, 13, 16, 0.25);
-      transform: translateY(-3px);
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #9F0D10, #EFD9BC, #9F0D10, transparent);
-    }
-
-    .card-title {
-      font-family: 'Outrun Future', sans-serif;
-      font-size: 20px;
-      color: #EFD9BC;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .card-title i {
-      color: #9F0D10;
-      font-size: 24px;
-    }
-
-    .card-title span {
-      background: rgba(159, 13, 16, 0.2);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-family: 'Google Sans', sans-serif;
-      color: #EFD9BC;
-    }
-
-    /* Nichos */
-    .nichos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 10px;
-    }
-
-    .nicho-item {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid #373737;
-      border-radius: 5px;
-      padding: 12px 8px;
-      text-align: center;
-      font-size: 15px;
-      transition: all 0.3s ease;
-      color: #EFD9BC;
-    }
-
-    .nicho-item:hover {
-      border-color: #9F0D10;
-      background: rgba(159, 13, 16, 0.1);
-      transform: scale(1.02);
-    }
-
-    .nicho-item i {
-      color: #9F0D10;
-      margin-right: 6px;
-      font-size: 14px;
-    }
-
-    /* Diferenciais */
-    .diferenciais-list {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    @media (min-width: 500px) {
-      .diferenciais-list {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .diferencial-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px;
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid #373737;
-      border-radius: 12px;
-      color: #EFD9BC;
-    }
-
-    .diferencial-item i {
-      font-size: 24px;
-      color: #9F0D10;
-    }
-
-    /* Parcerias */
-    .parcerias-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 15px;
-    }
-
-    .parceria-card {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid #373737;
-      border-radius: 15px;
-      padding: 20px 12px;
-      text-align: center;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .parceria-card:hover {
-      border-color: #9F0D10;
-      box-shadow: 0 0 20px rgba(159, 13, 16, 0.25);
-      transform: translateY(-3px);
-    }
-
-    .parceria-logo-container {
-      height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .parceria-card img {
-      max-width: 100px;
-      max-height: 45px;
-      object-fit: contain;
-      filter: brightness(0.9);
-      transition: all 0.3s ease;
-      border-radius: 8px;
-    }
-
-    .parceria-card:hover img {
-      filter: brightness(1);
-    }
-
-    .codigo-destaque {
-      color: #9F0D10;
-      font-weight: bold;
-      font-size: 13px;
-      background: rgba(159, 13, 16, 0.15);
-      padding: 4px 8px;
-      border-radius: 12px;
-      display: inline-block;
-    }
-
-    .parceria-card a {
-      color: #EFD9BC;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 12px;
-      background: #9F0D10;
-      padding: 8px 16px;
-      border-radius: 20px;
-      transition: all 0.3s ease;
-      font-weight: bold;
-      width: fit-content;
-    }
-
-    .parceria-card a:hover {
-      background: #EFD9BC;
-      color: #141413;
-      transform: scale(1.03);
-      box-shadow: 0 0 15px #9F0D10;
-    }
-
-    /* ===== DESTAQUE PIRATESWAP ===== */
-    .parceria-card.destaque {
-      border: 2px solid #EFD9BC;
-      background: rgba(159, 13, 16, 0.15);
-      position: relative;
-      overflow: hidden;
-      animation: pulseGlow 2s ease-in-out infinite;
-    }
-
-    .parceria-card.destaque::before {
-      content: "✦ NOVA ✦";
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      background: #9F0D10;
-      color: #EFD9BC;
-      font-size: 10px;
-      font-weight: 700;
-      padding: 3px 12px;
-      border-radius: 20px;
-      letter-spacing: 1px;
-      animation: blinkBadge 1.5s ease-in-out infinite;
-    }
-
-    .parceria-card.destaque::after {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      border-radius: 16px;
-      padding: 2px;
-      background: linear-gradient(45deg, #9F0D10, #EFD9BC, #9F0D10, #EFD9BC);
-      background-size: 300% 300%;
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      animation: borderGlow 3s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .parceria-card.destaque:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 0 40px rgba(159, 13, 16, 0.6), 0 0 80px rgba(159, 13, 16, 0.3);
-    }
-
-    .parceria-card.destaque .codigo-destaque {
-      background: rgba(239, 217, 188, 0.2);
-      color: #EFD9BC;
-      font-size: 14px;
-      padding: 6px 14px;
-    }
-
-    .parceria-card.destaque a {
-      background: #EFD9BC;
-      color: #141413;
-      font-weight: 700;
-    }
-
-    .parceria-card.destaque a:hover {
-      background: #9F0D10;
-      color: #EFD9BC;
-      box-shadow: 0 0 25px #9F0D10;
-    }
-
-    /* Badge "NOVO" animado */
-    .nova-badge {
-      display: inline-block;
-      background: #9F0D10;
-      color: #EFD9BC;
-      font-size: 10px;
-      font-weight: 700;
-      padding: 3px 12px;
-      border-radius: 20px;
-      letter-spacing: 1px;
-      animation: blinkBadge 1.5s ease-in-out infinite;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 15px rgba(159, 13, 16, 0.3); }
-      50% { box-shadow: 0 0 40px rgba(159, 13, 16, 0.6), 0 0 60px rgba(159, 13, 16, 0.2); }
-    }
-
-    @keyframes borderGlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    @keyframes blinkBadge {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    /* Pacotes */
-    .pacotes-grid {
-      display: grid;
-      grid-template-columns: 1fr;
       gap: 20px;
     }
 
-    @media (min-width: 500px) {
-      .pacotes-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 900px) {
-      .pacotes-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .pacote-card {
-      background: linear-gradient(135deg, rgba(26, 26, 25, 0.9), rgba(20, 20, 19, 0.9));
-      border: 1px solid #9F0D10;
-      border-radius: 15px;
-      padding: 25px 15px;
+    /* Perfil e Cabeçalho Minimalista */
+    .profile-header {
       text-align: center;
-      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .profile-avatar-wrapper {
       position: relative;
-      overflow: hidden;
+      margin-bottom: 16px;
     }
 
-    .pacote-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(159, 13, 16, 0.3);
+    .profile-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--card-border);
+      box-shadow: 0 0 25px var(--accent-glow);
+      transition: transform 0.3s ease;
     }
 
-    .pacote-valor {
-      font-family: 'Outrun Future', sans-serif;
-      font-size: 32px;
+    .profile-avatar:hover {
+      transform: scale(1.03);
+    }
+
+    h1 {
+      font-size: 26px;
       font-weight: 700;
-      color: #9F0D10;
-      margin: 15px 0;
-      text-shadow: 0 0 8px #9F0D10;
-      word-break: break-word;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      margin-bottom: 6px;
     }
 
-    .pacote-desc {
-      color: #776D5F;
-      margin: 12px 0;
+    .bio {
       font-size: 14px;
-      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 480px;
+      line-height: 1.5;
+      font-weight: 400;
     }
 
-    .pacote-btn {
-      display: inline-block;
-      background: transparent;
-      border: 2px solid #9F0D10;
-      color: #EFD9BC;
-      padding: 10px 25px;
+    /* Banners & Cards Interativos */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Destacado / Hero CTA */
+    .hero-card {
+      background: linear-gradient(135deg, rgba(159, 13, 16, 0.2) 0%, rgba(18, 20, 24, 0.8) 100%);
+      border: 1px solid rgba(159, 13, 16, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
       text-decoration: none;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-      font-weight: bold;
-      cursor: pointer;
+      color: var(--text-main);
+    }
+
+    .hero-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 8px 30px var(--accent-glow);
+    }
+
+    .hero-badge {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #f87171;
+      background: rgba(159, 13, 16, 0.3);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .hero-title {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .hero-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--accent);
+      color: #ffffff;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+      margin-top: 4px;
+    }
+
+    .btn-primary:hover {
+      background-color: #be1215;
+    }
+
+    /* Títulos de Secção */
+    .section-title {
       font-size: 14px;
-      width: 100%;
-      max-width: 200px;
-      margin: 0 auto;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .pacote-btn:hover {
-      background: #9F0D10;
-      box-shadow: 0 0 20px #9F0D10;
-      color: #EFD9BC;
-    }
-
-    /* Setup */
-    .setup-grid {
+    /* Redes Sociais Minimalistas */
+    .social-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       gap: 12px;
     }
 
-    .setup-item {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid #373737;
-      border-radius: 12px;
-      padding: 12px 8px;
-      text-align: center;
-      transition: all 0.3s ease;
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 14px 16px;
+      border-radius: var(--radius);
       text-decoration: none;
-      color: #EFD9BC;
-      display: block;
-      font-size: 13px;
-      word-break: break-word;
-    }
-
-    .setup-item:hover {
-      border-color: #9F0D10;
-      background: rgba(159, 13, 16, 0.1);
-      transform: scale(1.02);
-    }
-
-    .setup-item i {
-      color: #9F0D10;
-      margin-right: 6px;
+      color: var(--text-main);
       font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
     }
 
-    .patrocinio-badge {
-      font-size: 10px;
-      color: #9F0D10;
-      margin-top: 4px;
-      opacity: 0.8;
+    .social-btn i {
+      font-size: 18px;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
     }
 
-    /* Radar effect */
-    .radar {
-      display: none;
+    .social-btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
     }
 
-    @media (min-width: 768px) {
-      .radar {
-        display: block;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 80px;
-        height: 80px;
-        border: 2px solid rgba(159, 13, 16, 0.3);
-        border-radius: 50%;
-        animation: radarSpin 4s linear infinite;
-        z-index: 999;
-      }
+    .social-btn:hover i {
+      color: var(--text-main);
     }
 
-    @keyframes radarSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    /* Grelha de Parcerias */
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
     }
 
-    /* Contact */
-    .contact-info {
-      margin: 15px 0;
-      font-size: 16px;
-      color: #9F0D10;
-      letter-spacing: 0.5px;
-      word-break: break-all;
+    .partner-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: rgba(12, 14, 18, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 16px;
+      gap: 12px;
     }
 
-    .propostas-btn {
-      display: inline-block;
-      background: #9F0D10;
-      color: #EFD9BC;
-      padding: 14px 30px;
+    .partner-logo {
+      height: 28px;
+      object-fit: contain;
+      filter: brightness(0.9);
+    }
+
+    .partner-code {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .partner-code span {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .partner-link {
+      font-size: 12px;
+      color: var(--text-main);
       text-decoration: none;
-      border-radius: 30px;
-      font-weight: bold;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-      width: 100%;
-      max-width: 280px;
-      margin: 0 auto;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      opacity: 0.8;
+      transition: opacity 0.2s;
     }
 
-    .propostas-btn:hover {
-      background: transparent;
-      border-color: #9F0D10;
-      box-shadow: 0 0 20px #9F0D10;
-      transform: scale(1.02);
+    .partner-link:hover {
+      opacity: 1;
+    }
+
+    /* Secção de Contacto Comercial / Email */
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      padding: 28px 20px;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .contact-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
     }
 
     .footer {
       text-align: center;
-      margin-top: 40px;
-      padding: 20px 10px;
-      border-top: 1px solid #373737;
-      color: #776D5F;
       font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 20px;
+      padding-bottom: 20px;
     }
 
-    /* Mobile adjustments */
-    @media (max-width: 480px) {
-      .container { padding: 15px 12px; }
-      .card { padding: 16px 12px; margin-bottom: 16px; }
-      .card-title { font-size: 18px; }
-      .card-title i { font-size: 20px; }
-      .nicho-item { padding: 10px 6px; font-size: 14px; }
-      .pacote-card { padding: 20px 12px; }
-      .pacote-valor { font-size: 28px; }
-      .pacote-desc { font-size: 13px; }
-      .pacote-btn { padding: 8px 20px; font-size: 13px; }
-      .parceria-card { padding: 15px 8px; }
-      .parceria-logo-container { height: 38px; }
-      .parceria-card img { max-width: 80px; max-height: 38px; }
-      .codigo-destaque { font-size: 11px; padding: 3px 6px; }
-      .parceria-card a { font-size: 11px; padding: 6px 12px; }
-      .diferencial-item { padding: 10px; font-size: 13px; }
-      .diferencial-item i { font-size: 20px; }
-      .setup-item { padding: 10px 6px; font-size: 12px; }
-      .propostas-btn { padding: 12px 20px; font-size: 15px; max-width: 240px; }
-      .parceria-card.destaque::before {
-        font-size: 8px;
-        padding: 2px 10px;
-        top: 4px;
-        right: 4px;
-      }
-    }
-
-    @media (max-width: 360px) {
-      h1 { font-size: 28px; }
-      .subtitle { font-size: 14px; padding: 10px; }
-      .socials { gap: 10px; }
-      .socials a { width: 40px; height: 40px; }
-      .socials img { width: 20px; height: 20px; }
-      .nichos-grid { grid-template-columns: repeat(2, 1fr); }
-      .parcerias-grid { grid-template-columns: 1fr; }
+    @media (max-width: 600px) {
+      body { padding: 24px 14px; }
+      .container { gap: 16px; }
+      .card { padding: 18px; }
+      .hero-title { font-size: 18px; }
+      .partner-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Canvas Three.js -->
+  <!-- Background 3D Subtil -->
   <canvas id="three-bg"></canvas>
 
-  <audio id="clickSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_3e5a4c1a21.mp3" preload="auto"></audio>
-
-  <div class="radar"></div>
-
   <div class="container">
-    <!-- Header -->
-    <div class="hud-header">
-      <img src="https://yt3.ggpht.com/1MX4E9wj8COtp3gajmlT0-HgDH0eHmRMb1ZHo9tFooDeQLSFQrOeJV8ty_2CECL8Ddk3ukKI=s176-c-k-c0x00ffffff-no-rj" alt="Chihuahua" class="profile-pic" />
-      <h1>CHIHUAHUA</h1>
-      <div class="subtitle">Criadora de conteúdo • CS2 • Tecnologia</div>
-      <div class="socials">
-        <a href="https://www.youtube.com/@bychihuahua" target="_blank"><img src="https://www.iconpacks.net/icons/1/free-youtube-icon-123-thumb.png" alt="YouTube" /></a>
-        <a href="https://www.instagram.com/bychihuahua" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/717/717392.png" alt="Instagram" /></a>
-        <a href="https://www.tiktok.com/@bychihuahua" target="_blank"><img src="https://img.icons8.com/ios_filled/512/FFFFFF/tiktok.png" alt="TikTok" /></a>
-        <a href="https://www.twitch.tv/bychihuahuatv" target="_blank"><img src="https://www.iconpacks.net/icons/2/free-twitch-icon-2178-thumb.png" alt="Twitch" /></a>
+    
+    <!-- Cabeçalho de Perfil -->
+    <header class="profile-header">
+      <div class="profile-avatar-wrapper">
+        <img src="https://yt3.ggpht.com/1MX4E9wj8COtp3gajmlT0-HgDH0eHmRMb1ZHo9tFooDeQLSFQrOeJV8ty_2CECL8Ddk3ukKI=s176-c-k-c0x00ffffff-no-rj" alt="Chihuahua" class="profile-avatar" />
+      </div>
+      <h1>Chihuahua</h1>
+      <p class="bio">Criadora de Conteúdo • Periféricos, Hardware & Tecnologia</p>
+    </header>
+
+    <!-- Destaque para Recomendação de Produtos -->
+    <a href="produtos.html" class="card hero-card">
+      <span class="hero-badge">Recomendações & Reviews</span>
+      <h2 class="hero-title">Explora o meu Guia de Produtos</h2>
+      <p class="hero-subtitle">Ratos, teclados, auscultadores e acessórios recomendados nos vídeos.</p>
+      <div class="btn-primary">
+        Ver Produtos Recomendados <i class="fas fa-arrow-right"></i>
+      </div>
+    </a>
+
+    <!-- Redes Sociais -->
+    <div>
+      <div class="section-title"><i class="fas fa-share-nodes"></i> Redes Sociais</div>
+      <div class="social-grid">
+        <a href="https://www.youtube.com/@bychihuahua" target="_blank" class="social-btn">
+          <i class="fab fa-youtube"></i> YouTube
+        </a>
+        <a href="https://www.tiktok.com/@bychihuahua" target="_blank" class="social-btn">
+          <i class="fab fa-tiktok"></i> TikTok
+        </a>
+        <a href="https://www.twitch.tv/bychihuahuatv" target="_blank" class="social-btn">
+          <i class="fab fa-twitch"></i> Twitch
+        </a>
+        <a href="https://www.instagram.com/bychihuahua" target="_blank" class="social-btn">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
       </div>
     </div>
 
-    <!-- Nichos -->
+    <!-- Parcerias & Cupões -->
     <div class="card">
-      <div class="card-title"><i class="fas fa-crosshairs"></i> NICHOS ABORDADOS <span>FOCUS</span></div>
-      <div class="nichos-grid">
-        <div class="nicho-item"><i class="fas fa-skull"></i> CS2</div>
-        <div class="nicho-item"><i class="fas fa-keyboard"></i> Periféricos</div>
-        <div class="nicho-item"><i class="fas fa-gamepad"></i> Tecnologia</div>
-        <div class="nicho-item"><i class="fas fa-tag"></i> Mercado de Skins</div>
-        <div class="nicho-item"><i class="fas fa-play"></i> Gameplay</div>
-      </div>
-    </div>
-
-    <!-- Diferenciais -->
-    <div class="card">
-      <div class="card-title"><i class="fas fa-trophy"></i> DIFERENCIAIS <span>SKILLS</span></div>
-      <div class="diferenciais-list">
-        <div class="diferencial-item"><i class="fas fa-check-circle"></i> Conteúdo útil e aprofundado sobre CS2</div>
-        <div class="diferencial-item"><i class="fas fa-bolt"></i> Análises técnicas de hardware</div>
-        <div class="diferencial-item"><i class="fas fa-users"></i> Comunidade engajada e ativa</div>
-        <div class="diferencial-item"><i class="fas fa-star"></i> +7 anos de experiência</div>
-      </div>
-    </div>
-
-    <!-- Parcerias -->
-    <div class="card">
-      <div class="card-title"><i class="fas fa-handshake"></i> PARCERIAS ATUAIS <span>TEAM</span></div>
-      <div class="parcerias-grid">
-        <!-- Corsair -->
-        <div class="parceria-card">
-          <div class="parceria-logo-container"><img src="https://cwsmgmt.corsair.com/press/CORSAIRLogo2020_stack_W.png" alt="Corsair" /></div>
-          <span class="codigo-destaque">Parceiro Oficial</span>
-          <a href="https://www.corsair.com" target="_blank">corsair.com</a>
-        </div>
+      <div class="section-title"><i class="fas fa-handshake"></i> Parcerias & Cupões</div>
+      <div class="partner-grid">
         
-        <!-- Keydrop -->
-        <div class="parceria-card">
-          <div class="parceria-logo-container"><img src="https://img-cdn.hltv.org/eventlogo/lGv1pIMDC0xmLfmLkjh_8s.png?ixlib=java-2.1.0&s=e775ba2e3211591276ed3e2d61861595" alt="Keydrop" /></div>
-          <span class="codigo-destaque">Código: CHI20</span>
-          <a href="https://kd.link/?code=CHI20" target="_blank">keydrop.gg</a>
-        </div>
-        
-        <!-- Eneba -->
-        <div class="parceria-card">
-          <div class="parceria-logo-container"><img src="https://logos-world.net/wp-content/uploads/2022/12/Eneba-Logo.png" alt="Eneba" /></div>
-          <span class="codigo-destaque">Parceiro Oficial</span>
-          <a href="https://www.eneba.com/pt/?af_id=ChihuahuaGames&utm_medium=infl&utm_source=ChihuahuaGames" target="_blank">eneba.com</a>
+        <div class="partner-item">
+          <img src="https://cwsmgmt.corsair.com/press/CORSAIRLogo2020_stack_W.png" alt="Corsair" class="partner-logo">
+          <div class="partner-code">Parceiro <span>Oficial</span></div>
+          <a href="https://www.corsair.com" target="_blank" class="partner-link">Visitar Loja <i class="fas fa-external-link-alt"></i></a>
         </div>
 
-        <!-- Pirateswap - DESTAQUE -->
-        <div class="parceria-card destaque">
-          <div class="parceria-logo-container"><img src="https://www.steamanalyst.com/images/Logo_PirateSwap.webp" alt="Pirateswap" /></div>
-          <span class="codigo-destaque">⚓ Código: CHI</span>
-          <a href="https://pirateswap.com/?ref=chi" target="_blank">pirateswap.com</a>
+        <div class="partner-item">
+          <img src="https://www.steamanalyst.com/images/Logo_PirateSwap.webp" alt="Pirateswap" class="partner-logo">
+          <div class="partner-code">Código: <span>CHI</span></div>
+          <a href="https://pirateswap.com/?ref=chi" target="_blank" class="partner-link">Aceder <i class="fas fa-external-link-alt"></i></a>
         </div>
+
+        <div class="partner-item">
+          <img src="https://img-cdn.hltv.org/eventlogo/lGv1pIMDC0xmLfmLkjh_8s.png?ixlib=java-2.1.0&s=e775ba2e3211591276ed3e2d61861595" alt="Keydrop" class="partner-logo">
+          <div class="partner-code">Código: <span>CHI20</span></div>
+          <a href="https://kd.link/?code=CHI20" target="_blank" class="partner-link">Aceder <i class="fas fa-external-link-alt"></i></a>
+        </div>
+
+        <div class="partner-item">
+          <img src="https://logos-world.net/wp-content/uploads/2022/12/Eneba-Logo.png" alt="Eneba" class="partner-logo">
+          <div class="partner-code">Parceiro <span>Oficial</span></div>
+          <a href="https://www.eneba.com/pt/?af_id=ChihuahuaGames&utm_medium=infl&utm_source=ChihuahuaGames" target="_blank" class="partner-link">Visitar <i class="fas fa-external-link-alt"></i></a>
+        </div>
+
       </div>
     </div>
 
-    <!-- Pacotes -->
-    <div class="card">
-      <div class="card-title"><i class="fas fa-shopping-bag"></i> PACOTES ESPECIAIS <span>PREÇOS</span></div>
-      <div class="pacotes-grid">
-        <div class="pacote-card">
-          <i class="fas fa-crown" style="font-size: 32px; color: #9F0D10;"></i>
-          <div class="pacote-valor">150€</div>
-          <div class="pacote-desc">• 1 vídeo short (TikTok e YouTube)<br />• Menção num vídeo longo do YouTube<br />• 1 story</div>
-          <a href="mailto:constancaviriato@gmail.com?subject=Interesse%20no%20Pacote%20150%E2%82%AC&body=Ol%C3%A1%20Chihuahua%2C%0A%0ATenho%20interesse%20no%20pacote%20de%20150%E2%82%AC.%0A%0A%3E%201%20v%C3%ADdeo%20short%20(TikTok%20e%20YouTube)%0A%3E%20Men%C3%A7%C3%A3o%20num%20v%C3%ADdeo%20longo%20do%20YouTube%0A%3E%201%20story%0A%0APoder%C3%A1%20enviar%20mais%20informa%C3%A7%C3%B5es%3F%0A%0AObrigado%2C" class="pacote-btn">QUERO ESTE</a>
-        </div>
-        <div class="pacote-card">
-          <i class="fas fa-dragon" style="font-size: 32px; color: #9F0D10;"></i>
-          <div class="pacote-valor">300€</div>
-          <div class="pacote-desc">• 1 story semanal<br />• 1 menção semanal<br />• 1 vídeo longo mensal</div>
-          <a href="mailto:constancaviriato@gmail.com?subject=Interesse%20no%20Pacote%20300%E2%82%AC&body=Ol%C3%A1%20Chihuahua%2C%0A%0ATenho%20interesse%20no%20pacote%20de%20300%E2%82%AC.%0A%0A%3E%201%20story%20semanal%0A%3E%201%20men%C3%A7%C3%A3o%20semanal%0A%3E%201%20v%C3%ADdeo%20longo%20mensal%0A%0APoder%C3%A1%20enviar%20mais%20informa%C3%A7%C3%B5es%3F%0A%0AObrigado%2C" class="pacote-btn">QUERO ESTE</a>
-        </div>
-        <div class="pacote-card">
-          <i class="fas fa-ghost" style="font-size: 32px; color: #776D5F;"></i>
-          <div class="pacote-valor">SOB CONSULTA</div>
-          <div class="pacote-desc">• Pacote personalizado<br />• Campanha completa<br />• Ativações especiais<br />• Conteúdo exclusivo</div>
-          <a href="mailto:constancaviriato@gmail.com?subject=Interesse%20em%20Pacote%20Personalizado&body=Ol%C3%A1%20Chihuahua%2C%0A%0AGostaria%20de%20saber%20mais%20sobre%20um%20pacote%20personalizado%20para%20colabora%C3%A7%C3%A3o.%0A%0APodemos%20conversar%3F%0A%0AObrigado%2C" class="pacote-btn">CONTACTAR</a>
-        </div>
-      </div>
+    <!-- Contacto Comercial & Parcerias -->
+    <div class="card contact-card">
+      <div class="section-title"><i class="fas fa-envelope"></i> Contacto Comercial</div>
+      <p class="hero-subtitle">Interessado em realizar uma parceria ou ativação de marca?</p>
+      <a href="mailto:constancaviriato@gmail.com?subject=Proposta%20de%20Parceria%20-%20Chihuahua" class="contact-btn">
+        <i class="fas fa-paper-plane"></i> Enviar Email de Proposta
+      </a>
     </div>
 
-    <!-- Setup -->
-    <div class="card">
-      <div class="card-title"><i class="fas fa-computer"></i> SETUP <span>GEAR • PATROCÍNIO CORSAIR</span></div>
-      <div class="setup-grid">
-        <a href="https://tidd.ly/4kE5zly" target="_blank" class="setup-item"><i class="fas fa-mouse"></i> M75 Air Corsair <div class="patrocinio-badge">Parceiro Corsair</div></a>
-        <div class="setup-item" style="cursor: default;"><i class="fas fa-mouse"></i> Logitech MX Master 2 <div class="patrocinio-badge">Setup pessoal</div></div>
-        <a href="https://tidd.ly/43ZsgJc" target="_blank" class="setup-item"><i class="fas fa-keyboard"></i> K65 RGB Mini Corsair <div class="patrocinio-badge">Parceiro Corsair</div></a>
-        <a href="https://tidd.ly/4mZWAfh" target="_blank" class="setup-item"><i class="fas fa-headphones"></i> VOID WIRELESS v2 <div class="patrocinio-badge">Parceiro Corsair</div></a>
-        <div class="setup-item" style="cursor: default;"><i class="fas fa-tv"></i> HP X24ih <div class="patrocinio-badge">Setup pessoal</div></div>
-        <a href="https://gamerunlocked.pt/produto/x-raypad-equate-plus-v2-kiwami/?srsltid=AfmBOorCmdo_9dPW7GbC4SVgQbRzBluV5dzloxQC8HQ4097ISxWa1qUY" target="_blank" class="setup-item"><i class="fas fa-mousepad"></i> X-raypad Equate Plus v2 Kiwami <div class="patrocinio-badge">Setup pessoal</div></a>
-      </div>
-    </div>
+    <!-- Footer -->
+    <footer class="footer">
+      © 2026 Chihuahua • Todos os direitos reservados
+    </footer>
 
-    <!-- Contact -->
-    <div class="card" style="text-align: center;">
-      <div class="card-title" style="justify-content: center;"><i class="fas fa-envelope"></i> CONTACTO</div>
-      <div class="contact-info">constancaviriato@gmail.com</div>
-      <a href="mailto:constancaviriato@gmail.com?subject=Proposta%20de%20Colabora%C3%A7%C3%A3o&body=Ol%C3%A1%20Chihuahua%2C%0A%0AVenho%20por%20este%20meio%20apresentar%20uma%20proposta%20de%20colabora%C3%A7%C3%A3o.%0A%0A%F0%9F%93%8A%20Detalhes%20da%20proposta%3A%0A%0A%0AAgrade%C3%A7o%20desde%20j%C3%A1%20a%20aten%C3%A7%C3%A3o%20e%20aguardo%20feedback.%0A%0AMelhores%20cumprimentos%2C" class="propostas-btn">PROPOSTAS <i class="fas fa-paper-plane"></i></a>
-    </div>
-
-    <div class="footer">© 2026 Chihuahua • Media Kit • Todos os direitos reservados</div>
   </div>
 
-  <!-- Sons -->
-  <script>
-    const clickSound = document.getElementById("clickSound");
-    document.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", (e) => {
-        clickSound.currentTime = 0;
-        clickSound.play();
-      });
-    });
-  </script>
-
-  <!-- Biblioteca Three.js via CDN -->
+  <!-- Background 3D Leve e Minimalista -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-  <!-- Script da Animação 3D com Botão do YouTube -->
   <script>
-    // 1. Configuração da Cena
     const canvas = document.getElementById('three-bg');
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 25;
+    camera.position.z = 30;
 
     const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // 2. Grupo do Botão do YouTube
-    const youtubeGroup = new THREE.Group();
-
-    // Desenhar o Retângulo Arredondado
-    const width = 12, height = 8, radius = 2.2;
-    const shape = new THREE.Shape();
-    shape.moveTo(-width/2 + radius, -height/2);
-    shape.lineTo(width/2 - radius, -height/2);
-    shape.quadraticCurveTo(width/2, -height/2, width/2, -height/2 + radius);
-    shape.lineTo(width/2, height/2 - radius);
-    shape.quadraticCurveTo(width/2, height/2, width/2 - radius, height/2);
-    shape.lineTo(-width/2 + radius, height/2);
-    shape.quadraticCurveTo(-width/2, height/2, -width/2, height/2 - radius);
-    shape.lineTo(-width/2, -height/2 + radius);
-    shape.quadraticCurveTo(-width/2, -height/2, -width/2 + radius, -height/2);
-
-    // Extrusão 3D
-    const extrudeSettings = { depth: 2.5, bevelEnabled: true, bevelSegments: 3, steps: 1, bevelSize: 0.5, bevelThickness: 0.5 };
-    const bodyGeometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
-    bodyGeometry.center();
-
-    const bodyMaterial = new THREE.MeshBasicMaterial({
-      color: 0x9F0D10,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.35
-    });
-    const bodyMesh = new THREE.Mesh(bodyGeometry, bodyMaterial);
-    youtubeGroup.add(bodyMesh);
-
-    // Triângulo Play
-    const playShape = new THREE.Shape();
-    playShape.moveTo(-1.8, -2.5);
-    playShape.lineTo(2.5, 0);
-    playShape.lineTo(-1.8, 2.5);
-    playShape.closePath();
-
-    const playGeometry = new THREE.ExtrudeGeometry(playShape, { depth: 1, bevelEnabled: false });
-    playGeometry.center();
-
-    const playMaterial = new THREE.MeshBasicMaterial({
-      color: 0xEFD9BC,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.6
-    });
-    const playMesh = new THREE.Mesh(playGeometry, playMaterial);
-    playMesh.position.z = 1;
-    youtubeGroup.add(playMesh);
-
-    scene.add(youtubeGroup);
-
-    // 3. Campo de Partículas
-    const particlesCount = 250;
+    // Partículas flutuantes e discretas
+    const particlesCount = 120;
     const particlesGeometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particlesCount * 3);
 
     for (let i = 0; i < particlesCount * 3; i += 3) {
-      positions[i] = (Math.random() - 0.5) * 100;
-      positions[i + 1] = (Math.random() - 0.5) * 100;
-      positions[i + 2] = (Math.random() - 0.5) * 100;
+      positions[i] = (Math.random() - 0.5) * 80;
+      positions[i + 1] = (Math.random() - 0.5) * 80;
+      positions[i + 2] = (Math.random() - 0.5) * 80;
     }
 
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     const particlesMaterial = new THREE.PointsMaterial({
-      color: 0xEFD9BC,
-      size: 0.4,
+      color: 0x9f0d10,
+      size: 0.5,
       transparent: true,
-      opacity: 0.35
+      opacity: 0.3
     });
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particlesMesh);
 
-    // 4. Interação com Cursor
-    let mouseX = 0;
-    let mouseY = 0;
-    window.addEventListener('mousemove', (e) => {
-      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-    });
-
-    // 5. Redimensionamento
     window.addEventListener('resize', () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    // 6. Loop de Animação
     function animate() {
       requestAnimationFrame(animate);
-
-      youtubeGroup.rotation.y += 0.008;
-      particlesMesh.rotation.y -= 0.001;
-
-      youtubeGroup.rotation.x = mouseY * 0.3;
-      youtubeGroup.position.x += (mouseX * 2 - youtubeGroup.position.x) * 0.05;
-
+      particlesMesh.rotation.y += 0.0005;
+      particlesMesh.rotation.x += 0.0002;
       renderer.render(scene, camera);
     }
-
     animate();
   </script>
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7634353064287764" crossorigin="anonymous"></script>
-
 </body>
 </html>
